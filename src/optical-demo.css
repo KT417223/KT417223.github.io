@@ -167,6 +167,7 @@ button {
 }
 
 .module-map,
+.roadmap-grid,
 .kpi-grid,
 .dashboard-grid,
 .system-flow,
@@ -188,6 +189,99 @@ button {
 .system-flow {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-bottom: 1rem;
+}
+
+.roadmap-section {
+  margin: 1rem 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.section-heading h2,
+.section-heading p {
+  margin: 0;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+}
+
+.section-heading > p {
+  max-width: 30rem;
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.65;
+}
+
+.roadmap-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.roadmap-item {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+  min-height: 11.5rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--panel) 94%, transparent);
+  box-shadow: 0 8px 26px rgba(21, 32, 28, 0.05);
+}
+
+.roadmap-item.is-ready {
+  border-color: color-mix(in srgb, var(--green) 28%, var(--line));
+}
+
+.roadmap-item.is-ready:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(21, 32, 28, 0.1);
+}
+
+.roadmap-item strong {
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+.roadmap-item small {
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.55;
+}
+
+.roadmap-status {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+.status-detail {
+  background: color-mix(in srgb, var(--green) 16%, white);
+  color: var(--green-dark);
+}
+
+.status-draft {
+  background: color-mix(in srgb, var(--blue) 16%, white);
+  color: var(--blue);
+}
+
+.status-planned {
+  background: color-mix(in srgb, var(--amber) 18%, white);
+  color: #74470d;
+}
+
+.status-note {
+  background: var(--panel-soft);
+  color: var(--muted);
 }
 
 .module-map article,
@@ -948,6 +1042,7 @@ th {
   }
 
   .module-map,
+  .roadmap-grid,
   .system-flow,
   .kpi-grid,
   .dashboard-grid,
@@ -961,6 +1056,11 @@ th {
   .member-card,
   .frame-tag-card {
     grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
   }
 }
 

@@ -22,6 +22,7 @@
         </a>
         <nav class="side-nav" aria-label="Demo navigation">
           <a class="active" href="#dashboard">Dashboard</a>
+          <a href="#roadmap">Roadmap</a>
           <a href="#queue">Queue</a>
           <a href="#members">Members</a>
           <a href="#inventory">Inventory</a>
@@ -63,6 +64,68 @@
             <strong>発注</strong>
             <small>帳票作成・メーカー送付</small>
           </article>
+        </section>
+
+        <section class="roadmap-section" id="roadmap" aria-labelledby="roadmapTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Workflow roadmap</p>
+              <h2 id="roadmapTitle">眼鏡店業務フローの実装状況</h2>
+            </div>
+            <p>完成済みの詳細モックにすぐ移動でき、これから作る業務も全体像として見える構成。</p>
+          </div>
+          <div class="roadmap-grid">
+            <a class="roadmap-item is-ready" href="queue-ticket-system.html">
+              <span class="roadmap-status status-detail">Detail</span>
+              <strong>待合発券</strong>
+              <small>番号札発券、販売員呼び出し、物理デバイス連携イメージ</small>
+            </a>
+            <a class="roadmap-item is-ready" href="member-lookup-system.html">
+              <span class="roadmap-status status-detail">Detail</span>
+              <strong>会員照合</strong>
+              <small>QR会員証、名前・電話番号検索、度数と購入履歴</small>
+            </a>
+            <a class="roadmap-item is-ready" href="frame-inventory-system.html">
+              <span class="roadmap-status status-detail">Detail</span>
+              <strong>フレーム在庫</strong>
+              <small>QRタグ、自店数量、他店舗在庫、販売引当</small>
+            </a>
+            <a class="roadmap-item is-ready" href="lens-inventory-system.html">
+              <span class="roadmap-status status-detail">Detail</span>
+              <strong>レンズ在庫</strong>
+              <small>不足アラート、発注ステータス、度数別在庫</small>
+            </a>
+            <a class="roadmap-item is-ready" href="contact-inventory-system.html">
+              <span class="roadmap-status status-detail">Detail</span>
+              <strong>コンタクト在庫</strong>
+              <small>カテゴリ別在庫、取り置き、期限と再発注</small>
+            </a>
+            <article class="roadmap-item">
+              <span class="roadmap-status status-draft">Draft</span>
+              <strong>視力測定・処方入力</strong>
+              <small>SPH/CYL/AXIS/ADD、PD、処方履歴を会員記録へ接続</small>
+            </article>
+            <article class="roadmap-item">
+              <span class="roadmap-status status-planned">Planned</span>
+              <strong>見積・販売登録</strong>
+              <small>フレーム・レンズ選択、値引き、販売引当、会計前確認</small>
+            </article>
+            <article class="roadmap-item">
+              <span class="roadmap-status status-planned">Planned</span>
+              <strong>加工・検品ステータス</strong>
+              <small>加工待ち、加工中、検品、受け渡し待ちを一覧管理</small>
+            </article>
+            <article class="roadmap-item">
+              <span class="roadmap-status status-planned">Planned</span>
+              <strong>QR棚卸し</strong>
+              <small>スタッフがQRを連続スキャンし、実在庫との差分を確認</small>
+            </article>
+            <article class="roadmap-item note-item">
+              <span class="roadmap-status status-note">Member note</span>
+              <strong>受け渡し・保証・修理</strong>
+              <small>フィッティング記録、保証対応、修理受付は会員備考へ集約</small>
+            </article>
+          </div>
         </section>
 
         <section class="kpi-grid" id="dashboard">
