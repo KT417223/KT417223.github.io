@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Optical store inventory and sales management mockup."
+      content="Optical store operations mockup covering queue tickets, membership lookup, inventory, ordering, and sales."
     />
     <title>Optical Flow Mock</title>
     <link rel="stylesheet" href="../src/optical-demo.css" />
@@ -17,15 +17,16 @@
           <span class="brand-mark">OF</span>
           <span>
             <strong>Optical Flow</strong>
-            <small>Inventory mock</small>
+            <small>Store ops mock</small>
           </span>
         </a>
         <nav class="side-nav" aria-label="Demo navigation">
           <a class="active" href="#dashboard">Dashboard</a>
-          <a href="#orders">Orders</a>
+          <a href="#queue">Queue</a>
+          <a href="#members">Members</a>
           <a href="#inventory">Inventory</a>
           <a href="#purchase">Purchase</a>
-          <a href="#customers">Customers</a>
+          <a href="#sales">Sales</a>
         </nav>
       </aside>
 
@@ -33,47 +34,47 @@
         <header class="topbar">
           <div>
             <p class="eyebrow">Optical retail operations</p>
-            <h1>発注から販売までをつなぐ在庫管理モック</h1>
+            <h1>待合から販売、在庫、発注までつなぐ店舗業務モック</h1>
           </div>
           <div class="top-actions">
             <button type="button" class="icon-button" aria-label="Search">⌕</button>
-            <button type="button" class="primary-button">新規受注</button>
+            <button type="button" class="primary-button" id="issueTicket">番号札を発券</button>
           </div>
         </header>
 
-        <section class="flow-strip" aria-label="Process flow">
+        <section class="module-map" aria-label="System modules">
           <article>
             <span>01</span>
-            <strong>需要確認</strong>
-            <small>販売傾向と欠品予兆</small>
+            <strong>待合発券</strong>
+            <small>番号札発券・販売員呼び出し</small>
           </article>
           <article>
             <span>02</span>
-            <strong>発注</strong>
-            <small>フレーム・レンズ手配</small>
+            <strong>会員照合</strong>
+            <small>QR会員証・視力情報</small>
           </article>
           <article>
             <span>03</span>
-            <strong>入荷</strong>
-            <small>検品と在庫反映</small>
+            <strong>在庫管理</strong>
+            <small>フレーム・レンズ・コンタクト</small>
           </article>
           <article>
             <span>04</span>
-            <strong>販売</strong>
-            <small>受注・加工・受け渡し</small>
+            <strong>発注</strong>
+            <small>帳票作成・メーカー送付</small>
           </article>
         </section>
 
         <section class="kpi-grid" id="dashboard">
           <article>
-            <span>本日在庫金額</span>
-            <strong>¥8.42M</strong>
-            <small>前月比 +4.8%</small>
+            <span>呼出待ち</span>
+            <strong id="queueCount">7 組</strong>
+            <small>平均待ち 12分</small>
           </article>
           <article>
-            <span>欠品リスク</span>
+            <span>欠品アラート</span>
             <strong>18 SKU</strong>
-            <small>うち至急 5件</small>
+            <small>至急 5件</small>
           </article>
           <article>
             <span>未完了受注</span>
@@ -81,78 +82,134 @@
             <small>加工待ち 11件</small>
           </article>
           <article>
-            <span>今月売上</span>
-            <strong>¥3.18M</strong>
-            <small>粗利率 46.2%</small>
+            <span>本日在庫金額</span>
+            <strong>¥8.42M</strong>
+            <small>前月比 +4.8%</small>
           </article>
         </section>
 
         <section class="dashboard-grid">
-          <article class="panel wide" id="orders">
+          <article class="panel queue-panel" id="queue">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Order pipeline</p>
-                <h2>受注ステータス</h2>
+                <p class="eyebrow">Queue ticket</p>
+                <h2>待合発券システム</h2>
               </div>
-              <button type="button" class="ghost-button">一覧</button>
+              <span class="live-badge">Now serving B-014</span>
+            </div>
+            <div class="ticket-layout">
+              <div class="ticket-card">
+                <span>次の番号</span>
+                <strong id="nextTicket">B-021</strong>
+                <p>受付内容: 視力測定 / フレーム相談</p>
+              </div>
+              <div class="call-list">
+                <button type="button" data-ticket="B-015">B-015 を呼出</button>
+                <button type="button" data-ticket="B-016">B-016 を呼出</button>
+                <button type="button" data-ticket="B-017">B-017 を呼出</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel member-panel" id="members">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Member lookup</p>
+                <h2>QR会員照合</h2>
+              </div>
+              <button type="button" class="ghost-button">QR読取</button>
+            </div>
+            <div class="member-card">
+              <div class="qr-box" aria-label="QR code mock"></div>
+              <div>
+                <strong>Member A-1024</strong>
+                <dl class="member-spec">
+                  <div><dt>視力</dt><dd>R 0.8 / L 0.7</dd></div>
+                  <div><dt>PD</dt><dd>63.5 mm</dd></div>
+                  <div><dt>乱視</dt><dd>あり / Axis 180</dd></div>
+                  <div><dt>属性</dt><dd>遠近提案・ブルーライト希望</dd></div>
+                </dl>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel wide" id="sales">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Sales pipeline</p>
+                <h2>販売・加工ステータス</h2>
+              </div>
+              <button type="button" class="ghost-button">受注一覧</button>
             </div>
             <div class="order-board">
               <div>
                 <span class="status waiting">受付</span>
                 <strong>遠近両用セット</strong>
-                <p>顧客: A-1024 / 納期: 06/03</p>
+                <p>顧客: A-1024 / 納期: 06/03 / フレーム引当済み</p>
               </div>
               <div>
                 <span class="status progress">加工中</span>
                 <strong>薄型非球面レンズ</strong>
-                <p>顧客: B-0881 / 納期: 06/01</p>
+                <p>顧客: B-0881 / 納期: 06/01 / レンズ入荷待ち</p>
               </div>
               <div>
                 <span class="status ready">受渡待ち</span>
                 <strong>キッズフレーム交換</strong>
-                <p>顧客: C-3310 / 連絡済み</p>
+                <p>顧客: C-3310 / 連絡済み / 受渡予定 18:00</p>
               </div>
             </div>
           </article>
 
-          <article class="panel" id="purchase">
+          <article class="panel purchase-panel" id="purchase">
             <div class="panel-heading">
               <div>
                 <p class="eyebrow">Purchase</p>
-                <h2>発注候補</h2>
+                <h2>発注・帳票作成</h2>
               </div>
+              <button type="button" class="ghost-button">メール作成</button>
             </div>
             <ul class="purchase-list">
               <li>
                 <span>鼻パッド S</span>
-                <strong>残 8</strong>
+                <strong>至急 40個</strong>
               </li>
               <li>
                 <span>βチタン 52□18</span>
-                <strong>残 2</strong>
+                <strong>定番 6本</strong>
               </li>
               <li>
                 <span>1.60 AS UV</span>
-                <strong>残 5</strong>
+                <strong>補充 12枚</strong>
               </li>
             </ul>
+            <div class="mail-format">
+              <span>メーカー送付フォーマット</span>
+              <p>品番 / 数量 / 納期希望 / 店舗コード / 担当者を自動差込</p>
+            </div>
           </article>
 
           <article class="panel inventory-panel" id="inventory">
             <div class="panel-heading">
               <div>
                 <p class="eyebrow">Inventory</p>
-                <h2>在庫一覧</h2>
+                <h2>フレーム・レンズ・コンタクト在庫</h2>
               </div>
-              <button type="button" class="ghost-button">棚卸</button>
+              <button type="button" class="ghost-button">QR棚卸</button>
+            </div>
+            <div class="inventory-tabs" aria-label="Inventory categories">
+              <button type="button" class="active">Frame</button>
+              <button type="button">Lens</button>
+              <button type="button">Contact</button>
+              <button type="button">Other stores</button>
             </div>
             <div class="table-wrap">
               <table>
                 <thead>
                   <tr>
                     <th>品目</th>
-                    <th>カテゴリ</th>
-                    <th>在庫</th>
+                    <th>区分</th>
+                    <th>自店</th>
+                    <th>他店</th>
                     <th>引当</th>
                     <th>状態</th>
                   </tr>
@@ -160,8 +217,9 @@
                 <tbody>
                   <tr>
                     <td>Classic 48□20 C1</td>
-                    <td>Frame</td>
+                    <td>Frame / QRタグ</td>
                     <td>12</td>
+                    <td>28</td>
                     <td>3</td>
                     <td><span class="pill ok">適正</span></td>
                   </tr>
@@ -169,38 +227,28 @@
                     <td>1.67 AS Blue Cut</td>
                     <td>Lens</td>
                     <td>6</td>
+                    <td>14</td>
                     <td>5</td>
                     <td><span class="pill warn">発注</span></td>
+                  </tr>
+                  <tr>
+                    <td>1day Moist -3.50</td>
+                    <td>Contact</td>
+                    <td>9</td>
+                    <td>41</td>
+                    <td>2</td>
+                    <td><span class="pill warn">補充</span></td>
                   </tr>
                   <tr>
                     <td>鼻パッド S</td>
                     <td>Parts</td>
                     <td>8</td>
+                    <td>23</td>
                     <td>6</td>
                     <td><span class="pill danger">至急</span></td>
                   </tr>
-                  <tr>
-                    <td>ケース Black</td>
-                    <td>Accessory</td>
-                    <td>44</td>
-                    <td>9</td>
-                    <td><span class="pill ok">適正</span></td>
-                  </tr>
                 </tbody>
               </table>
-            </div>
-          </article>
-
-          <article class="panel" id="customers">
-            <div class="panel-heading">
-              <div>
-                <p class="eyebrow">Customer</p>
-                <h2>顧客対応メモ</h2>
-              </div>
-            </div>
-            <div class="memo-card">
-              <strong>前回購入から18か月</strong>
-              <p>度数変化、レンズ傷、予備眼鏡の提案タイミング。販売履歴と在庫を見ながら接客へつなぐ。</p>
             </div>
           </article>
         </section>
