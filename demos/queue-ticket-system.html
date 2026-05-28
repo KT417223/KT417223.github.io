@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Queue ticket system requirements and interactive mock for an optical store."
+    />
+    <title>Queue Ticket System Mock</title>
+    <link rel="stylesheet" href="../src/optical-demo.css" />
+  </head>
+  <body>
+    <div class="app-frame">
+      <aside class="side-panel">
+        <a class="brand" href="optical-inventory.html">
+          <span class="brand-mark">QT</span>
+          <span>
+            <strong>Queue Ticket</strong>
+            <small>Requirement mock</small>
+          </span>
+        </a>
+        <nav class="side-nav" aria-label="Queue ticket navigation">
+          <a class="active" href="#flow">Flow</a>
+          <a href="#device">Device</a>
+          <a href="#monitor">Monitor</a>
+          <a href="#calling">Calling</a>
+          <a href="#requirements">Requirements</a>
+        </nav>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar detail-topbar">
+          <div>
+            <p class="eyebrow">Queue ticket system</p>
+            <h1>物理ボタンから番号札を発券し、PC監視で呼び出す</h1>
+          </div>
+          <div class="top-actions">
+            <button type="button" class="ghost-button" id="resetQueue">リセット</button>
+            <button type="button" class="primary-button" id="devicePress">物理ボタン入力</button>
+          </div>
+        </header>
+
+        <section class="system-flow" id="flow" aria-label="System data flow">
+          <article>
+            <span>1</span>
+            <strong>物理デバイス</strong>
+            <p>受付端末のボタンが押される。USB/HID、Bluetooth、または小型IoT端末を想定。</p>
+          </article>
+          <article>
+            <span>2</span>
+            <strong>PC監視アプリ</strong>
+            <p>常駐アプリが入力イベントを監視し、次番号を採番してキューへ登録。</p>
+          </article>
+          <article>
+            <span>3</span>
+            <strong>番号札発券</strong>
+            <p>プリンタまたは画面表示で番号札を発行。用途別に受付種別も保持。</p>
+          </article>
+          <article>
+            <span>4</span>
+            <strong>音声呼び出し</strong>
+            <p>販売員がPCで呼出操作を行い、物理スピーカーや店内端末から音声案内。</p>
+          </article>
+        </section>
+
+        <section class="ticket-lab">
+          <article class="panel device-sim" id="device">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Physical device</p>
+                <h2>受付ボタン入力</h2>
+              </div>
+              <span class="live-badge" id="deviceState">Standby</span>
+            </div>
+            <button type="button" class="device-button" id="deviceButton">
+              <span>PRESS</span>
+              <strong>番号札発券</strong>
+            </button>
+            <div class="device-spec-grid">
+              <div><span>Input</span><strong>USB HID / BLE</strong></div>
+              <div><span>Fallback</span><strong>画面ボタン</strong></div>
+              <div><span>Printer</span><strong>80mm receipt</strong></div>
+            </div>
+          </article>
+
+          <article class="panel monitor-panel" id="monitor">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">PC monitor</p>
+                <h2>監視ログ</h2>
+              </div>
+              <span class="live-badge" id="monitorState">Watching</span>
+            </div>
+            <ol class="event-log" id="eventLog">
+              <li><time>09:58</time><span>監視アプリ起動。物理デバイス接続を確認。</span></li>
+              <li><time>09:59</time><span>音声出力デバイスを確認。呼出準備完了。</span></li>
+            </ol>
+          </article>
+
+          <article class="panel call-console" id="calling">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Calling console</p>
+                <h2>販売員呼び出し</h2>
+              </div>
+              <span class="live-badge" id="speakerState">Speaker ready</span>
+            </div>
+            <div class="now-ticket">
+              <span>次に呼び出す番号</span>
+              <strong id="currentTicket">A-001</strong>
+            </div>
+            <div class="call-actions">
+              <button type="button" class="primary-button" id="callNext">音声呼び出し</button>
+              <button type="button" class="ghost-button" id="skipTicket">不在スキップ</button>
+            </div>
+            <p class="announcement" id="announcement">
+              「A-001番でお待ちのお客様、受付カウンターまでお越しください」
+            </p>
+          </article>
+        </section>
+
+        <section class="panel requirements-panel" id="requirements">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Requirement notes</p>
+              <h2>発券システムの要件メモ</h2>
+            </div>
+          </div>
+          <div class="requirements-grid">
+            <article>
+              <h3>機能要件</h3>
+              <ul>
+                <li>物理ボタン押下で番号を採番する</li>
+                <li>受付種別を選択できる</li>
+                <li>発券履歴、呼出履歴、不在履歴を残す</li>
+                <li>販売員PCから次番号を呼び出せる</li>
+              </ul>
+            </article>
+            <article>
+              <h3>非機能要件</h3>
+              <ul>
+                <li>ネットワーク断でも最低限発券できる</li>
+                <li>デバイス未接続時は画面ボタンへ切替</li>
+                <li>音声出力失敗時は画面通知を残す</li>
+                <li>混雑時でも販売員が一目で状況把握できる</li>
+              </ul>
+            </article>
+            <article>
+              <h3>連携候補</h3>
+              <ul>
+                <li>会員照合システムへの受付番号引き渡し</li>
+                <li>販売・加工ステータスとの紐づけ</li>
+                <li>来店分析、曜日別混雑分析</li>
+                <li>呼出音声テンプレート管理</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../src/queue-ticket-system.js"></script>
+  </body>
+</html>

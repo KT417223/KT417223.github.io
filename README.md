@@ -30,11 +30,13 @@ python3 -m http.server 5173
 │   └── portfolio-hero.png
 ├── demos
 │   └── optical-inventory.html
+│   └── queue-ticket-system.html
 ├── index.html
 ├── src
 │   ├── app.js
 │   ├── optical-demo.css
 │   ├── optical-demo.js
+│   ├── queue-ticket-system.js
 │   └── styles.css
 ├── .devcontainer
 │   └── devcontainer.json
