@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lens inventory system mock with shortage alerts and purchase order statuses."
+    />
+    <title>Lens Inventory System Mock</title>
+    <link rel="stylesheet" href="../src/optical-demo.css" />
+  </head>
+  <body>
+    <div class="app-frame">
+      <aside class="side-panel">
+        <a class="brand" href="optical-inventory.html">
+          <span class="brand-mark">LI</span>
+          <span>
+            <strong>Lens Inventory</strong>
+            <small>Requirement mock</small>
+          </span>
+        </a>
+        <nav class="side-nav" aria-label="Lens inventory navigation">
+          <a class="active" href="#alerts">Alerts</a>
+          <a href="#matrix">Stock</a>
+          <a href="#orders">Orders</a>
+          <a href="#requirements">Requirements</a>
+        </nav>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar detail-topbar">
+          <div>
+            <p class="eyebrow">Lens inventory system</p>
+            <h1>レンズ在庫を度数別に確認し、不足アラートと発注ステータスを管理する</h1>
+          </div>
+          <div class="top-actions">
+            <button type="button" class="ghost-button" id="resetLens">リセット</button>
+            <button type="button" class="primary-button" id="createLensOrder">不足分を発注</button>
+          </div>
+        </header>
+
+        <section class="system-flow" aria-label="Lens inventory flow">
+          <article>
+            <span>1</span>
+            <strong>度数別在庫</strong>
+            <p>SPH/CYL/AXIS/ADDや屈折率、コーティングごとに在庫数を確認。</p>
+          </article>
+          <article>
+            <span>2</span>
+            <strong>不足アラート</strong>
+            <p>最小在庫数を下回ったレンズを検知し、至急/注意/適正で表示。</p>
+          </article>
+          <article>
+            <span>3</span>
+            <strong>発注候補</strong>
+            <p>不足数、引当数、販売傾向を見て補充数量を自動提案。</p>
+          </article>
+          <article>
+            <span>4</span>
+            <strong>発注ステータス</strong>
+            <p>未発注、発注済、メーカー確認中、入荷待ち、入荷済を追跡。</p>
+          </article>
+        </section>
+
+        <section class="kpi-grid" id="alerts">
+          <article>
+            <span>不足アラート</span>
+            <strong id="alertCount">9 SKU</strong>
+            <small>至急 3件</small>
+          </article>
+          <article>
+            <span>発注済</span>
+            <strong id="orderedCount">14 枚</strong>
+            <small>メーカー確認中 6枚</small>
+          </article>
+          <article>
+            <span>入荷待ち</span>
+            <strong>8 枚</strong>
+            <small>本日予定 2枚</small>
+          </article>
+          <article>
+            <span>引当中</span>
+            <strong>21 枚</strong>
+            <small>加工待ち含む</small>
+          </article>
+        </section>
+
+        <section class="lens-layout">
+          <article class="panel lens-filter-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Filter</p>
+                <h2>在庫条件</h2>
+              </div>
+              <span class="live-badge" id="lensState">Monitoring</span>
+            </div>
+            <div class="search-mode-grid">
+              <button type="button" class="active">1.60 AS</button>
+              <button type="button">1.67 AS</button>
+              <button type="button">遠近</button>
+              <button type="button">乱視</button>
+            </div>
+            <div class="device-spec-grid">
+              <div><span>対象</span><strong>単焦点 / 遠近 / 乱視</strong></div>
+              <div><span>管理粒度</span><strong>SPH/CYL 0.25刻み</strong></div>
+              <div><span>発注単位</span><strong>1枚単位</strong></div>
+            </div>
+          </article>
+
+          <article class="panel shortage-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Shortage alerts</p>
+                <h2>不足アラート</h2>
+              </div>
+            </div>
+            <div class="alert-list">
+              <article>
+                <span class="pill danger">至急</span>
+                <strong>1.67 AS Blue Cut / SPH -2.25</strong>
+                <p>在庫 1 / 最小 4 / 引当 3 / 推奨発注 6枚</p>
+              </article>
+              <article>
+                <span class="pill warn">注意</span>
+                <strong>1.60 AS UV / SPH -1.50</strong>
+                <p>在庫 3 / 最小 5 / 引当 2 / 推奨発注 4枚</p>
+              </article>
+              <article>
+                <span class="pill danger">至急</span>
+                <strong>Progressive 1.60 / ADD +1.50</strong>
+                <p>在庫 0 / 最小 2 / 引当 1 / 推奨発注 3枚</p>
+              </article>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel lens-matrix-panel" id="matrix">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Stock matrix</p>
+              <h2>度数別レンズ在庫</h2>
+            </div>
+            <span class="live-badge">SPH/CYL 0.25 step</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>品目</th>
+                  <th>SPH</th>
+                  <th>CYL</th>
+                  <th>AXIS</th>
+                  <th>在庫</th>
+                  <th>引当</th>
+                  <th>最小</th>
+                  <th>状態</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1.67 AS Blue Cut</td>
+                  <td>-2.25</td>
+                  <td>-0.75</td>
+                  <td>180</td>
+                  <td id="lensStockCritical">1</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td><span class="pill danger">不足</span></td>
+                </tr>
+                <tr>
+                  <td>1.60 AS UV</td>
+                  <td>-1.50</td>
+                  <td>0.00</td>
+                  <td>-</td>
+                  <td>3</td>
+                  <td>2</td>
+                  <td>5</td>
+                  <td><span class="pill warn">注意</span></td>
+                </tr>
+                <tr>
+                  <td>Progressive 1.60</td>
+                  <td>-2.00</td>
+                  <td>-0.50</td>
+                  <td>170</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td><span class="pill danger">不足</span></td>
+                </tr>
+                <tr>
+                  <td>1.60 AS UV</td>
+                  <td>-0.75</td>
+                  <td>0.00</td>
+                  <td>-</td>
+                  <td>8</td>
+                  <td>1</td>
+                  <td>4</td>
+                  <td><span class="pill ok">適正</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel order-status-panel" id="orders">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Purchase status</p>
+              <h2>発注ステータス</h2>
+            </div>
+            <span class="live-badge" id="orderState">Draft ready</span>
+          </div>
+          <div class="history-list">
+            <article>
+              <div>
+                <strong>PO-LENS-20260528-001 / 1.67 AS Blue Cut</strong>
+                <p>6枚 / メーカー確認中 / 希望納期 05/31</p>
+              </div>
+              <span class="pill warn" id="firstOrderStatus">確認中</span>
+            </article>
+            <article>
+              <div>
+                <strong>PO-LENS-20260528-002 / Progressive 1.60</strong>
+                <p>3枚 / 未発注 / 不足アラートから作成</p>
+              </div>
+              <span class="pill danger" id="secondOrderStatus">未発注</span>
+            </article>
+            <article>
+              <div>
+                <strong>PO-LENS-20260527-004 / 1.60 AS UV</strong>
+                <p>4枚 / 入荷待ち / 本日午後予定</p>
+              </div>
+              <span class="pill ok">入荷待ち</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel requirements-panel" id="requirements">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Requirement notes</p>
+              <h2>レンズ在庫管理の要件メモ</h2>
+            </div>
+          </div>
+          <div class="requirements-grid">
+            <article>
+              <h3>不足アラート</h3>
+              <ul>
+                <li>最小在庫数を下回ったら警告</li>
+                <li>引当数を考慮して販売可能数を算出</li>
+                <li>至急/注意/適正で優先度表示</li>
+              </ul>
+            </article>
+            <article>
+              <h3>発注ステータス</h3>
+              <ul>
+                <li>未発注、発注済、確認中、入荷待ち、入荷済</li>
+                <li>メーカー別のメール/帳票作成へ連携</li>
+                <li>納期遅延時に販売員へ通知</li>
+              </ul>
+            </article>
+            <article>
+              <h3>度数管理</h3>
+              <ul>
+                <li>SPH/CYLは0.25刻み</li>
+                <li>乱視はCYLとAXISで管理</li>
+                <li>遠近はADDも保持</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../src/lens-inventory-system.js"></script>
+  </body>
+</html>

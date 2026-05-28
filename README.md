@@ -33,6 +33,7 @@ python3 -m http.server 5173
 │   └── queue-ticket-system.html
 │   └── member-lookup-system.html
 │   └── frame-inventory-system.html
+│   └── lens-inventory-system.html
 ├── index.html
 ├── src
 │   ├── app.js
@@ -41,6 +42,7 @@ python3 -m http.server 5173
 │   ├── queue-ticket-system.js
 │   ├── member-lookup-system.js
 │   ├── frame-inventory-system.js
+│   ├── lens-inventory-system.js
 │   └── styles.css
 ├── .devcontainer
 │   └── devcontainer.json
