@@ -23,7 +23,8 @@
         <nav class="side-nav" aria-label="Member lookup navigation">
           <a class="active" href="#search">Search</a>
           <a href="#results">Results</a>
-          <a href="#record">Record</a>
+          <a href="#record">Prescription</a>
+          <a href="#history">History</a>
           <a href="#requirements">Requirements</a>
         </nav>
       </aside>
@@ -59,7 +60,7 @@
           <article>
             <span>4</span>
             <strong>カルテ表示</strong>
-            <p>視力、PD、乱視、特殊属性、購入履歴、保証/修理履歴を接客に使える形で表示。</p>
+            <p>レンズ度数、PD、乱視、特殊属性、購入履歴、保証/修理履歴を接客に使える形で表示。</p>
           </article>
         </section>
 
@@ -144,13 +145,37 @@
           </div>
           <div class="record-grid">
             <article>
-              <h3>視力・度数情報</h3>
-              <dl class="member-spec">
-                <div><dt>裸眼視力</dt><dd>R 0.8 / L 0.7</dd></div>
-                <div><dt>PD</dt><dd>63.5 mm</dd></div>
-                <div><dt>乱視</dt><dd>あり / Axis 180</dd></div>
-                <div><dt>処方日</dt><dd>2026-04-18</dd></div>
-              </dl>
+              <h3>レンズ度数</h3>
+              <div class="prescription-table-wrap">
+                <table class="prescription-table">
+                  <thead>
+                    <tr>
+                      <th>眼</th>
+                      <th>SPH</th>
+                      <th>CYL</th>
+                      <th>AXIS</th>
+                      <th>ADD</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>R</td>
+                      <td>-2.25</td>
+                      <td>-0.75</td>
+                      <td>180</td>
+                      <td>+1.50</td>
+                    </tr>
+                    <tr>
+                      <td>L</td>
+                      <td>-2.00</td>
+                      <td>-0.50</td>
+                      <td>170</td>
+                      <td>+1.50</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="helper-text">SPH/CYL/ADDは0.25刻み、AXISは角度で管理。PDは 63.5mm。</p>
             </article>
             <article>
               <h3>特殊属性</h3>
@@ -164,11 +189,51 @@
             <article>
               <h3>購入・保証履歴</h3>
               <ul class="attribute-list">
-                <li>2026-04 遠近両用セット</li>
-                <li>2025-11 レンズ交換</li>
+                <li>最新処方: 2026-04-18</li>
                 <li>保証: 2027-04まで</li>
                 <li>修理: ネジ交換 1回</li>
+                <li>前回購入: 遠近両用セット</li>
               </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel purchase-history-panel" id="history">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Purchase history</p>
+              <h2>購入履歴</h2>
+            </div>
+            <span class="live-badge">4 records</span>
+          </div>
+          <div class="history-list">
+            <article>
+              <div>
+                <strong>2026-04-18 / 遠近両用セット</strong>
+                <p>フレーム: Classic 48□20 C1 / レンズ: 1.60 Progressive UV</p>
+              </div>
+              <span class="pill ok">保証中</span>
+            </article>
+            <article>
+              <div>
+                <strong>2025-11-03 / レンズ交換</strong>
+                <p>レンズ: 1.67 AS Blue Cut / コーティング変更</p>
+              </div>
+              <span class="pill ok">受渡済</span>
+            </article>
+            <article>
+              <div>
+                <strong>2025-05-22 / 調整・修理</strong>
+                <p>鼻パッド交換、ネジ交換、フィッティング調整</p>
+              </div>
+              <span class="pill warn">修理履歴</span>
+            </article>
+            <article>
+              <div>
+                <strong>2024-09-14 / コンタクト購入</strong>
+                <p>1day Moist -3.50 / 90枚パック / 定期補充候補</p>
+              </div>
+              <span class="pill ok">購入済</span>
             </article>
           </div>
         </section>
@@ -197,6 +262,15 @@
                 <li>最終来店日</li>
                 <li>前回購入商品</li>
                 <li>家族会員の紐づけ</li>
+              </ul>
+            </article>
+            <article>
+              <h3>カルテ管理</h3>
+              <ul>
+                <li>SPH/CYL/ADDは0.25刻みで入力</li>
+                <li>AXISは角度、PDはmmで管理</li>
+                <li>購入履歴から保証・修理を確認</li>
+                <li>前回度数と今回度数の差分表示</li>
               </ul>
             </article>
             <article>
