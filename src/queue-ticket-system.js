@@ -42,26 +42,26 @@ function issueTicket() {
   ticketNumber += 1;
   const next = formatTicket(ticketNumber);
   queue.push(next);
-  deviceState.textContent = "Input detected";
-  monitorState.textContent = "Ticket issued";
+  deviceState.textContent = "入力検知";
+  monitorState.textContent = "発券済み";
   addLog(`物理ボタン入力を検知。番号札 ${next} を発券。`);
   refreshTicket();
   window.setTimeout(() => {
-    deviceState.textContent = "Standby";
-    monitorState.textContent = "Watching";
+    deviceState.textContent = "待機中";
+    monitorState.textContent = "監視中";
   }, 1200);
 }
 
 function callTicket() {
   if (!queue.length) {
-    speakerState.textContent = "No queue";
+    speakerState.textContent = "呼出待ちなし";
     addLog("呼出待ちがないため、音声呼び出しを停止。");
     refreshTicket();
     return;
   }
 
   const called = queue.shift();
-  speakerState.textContent = `Calling ${called}`;
+  speakerState.textContent = `${called} 呼び出し中`;
   addLog(`販売員操作により ${called} を音声呼び出し。`);
   refreshTicket();
 }
@@ -80,9 +80,9 @@ function skipCurrentTicket() {
 function resetState() {
   ticketNumber = 1;
   queue = ["A-001"];
-  deviceState.textContent = "Standby";
-  monitorState.textContent = "Watching";
-  speakerState.textContent = "Speaker ready";
+  deviceState.textContent = "待機中";
+  monitorState.textContent = "監視中";
+  speakerState.textContent = "呼出準備完了";
   eventLog.innerHTML = `
     <li><time>${now()}</time><span>監視アプリ起動。物理デバイス接続を確認。</span></li>
     <li><time>${now()}</time><span>音声出力デバイスを確認。呼出準備完了。</span></li>

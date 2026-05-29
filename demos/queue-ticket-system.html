@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Queue ticket system requirements and interactive system demo for an optical store."
+      content="眼鏡店向けの受付・発券画面。番号札の発券、監視ログ、販売員の呼び出しを確認する。"
     />
-    <title>Queue Ticket System Demo</title>
+    <title>受付・発券</title>
     <link rel="stylesheet" href="../src/optical-demo.css" />
   </head>
   <body>
@@ -16,28 +16,26 @@
         <a class="brand" href="optical-inventory.html">
           <span class="brand-mark">QT</span>
           <span>
-            <strong>Queue Ticket</strong>
-            <small>System demo</small>
+            <strong>受付・発券</strong>
+            <small>業務システム</small>
           </span>
         </a>
-        <nav class="side-nav" aria-label="Queue ticket navigation">
-          <a class="active" href="#flow">Flow</a>
-          <a href="#device">Device</a>
-          <a href="#monitor">Monitor</a>
-          <a href="#calling">Calling</a>
-          <a href="#requirements">Requirements</a>
+        <nav class="side-nav" aria-label="受付・発券ナビゲーション">
+          <a class="active" href="#device">発券</a>
+          <a href="#monitor">監視ログ</a>
+          <a href="#calling">呼び出し</a>
+          <a href="#requirements">設計メモ</a>
         </nav>
-        <div class="home-links" aria-label="Home links">
-          <a href="../index.html">Portfolio Home</a>
-          <a href="optical-inventory.html">System Top</a>
+        <div class="home-links" aria-label="戻りリンク">
+          <a href="../index.html">ポートフォリオTOP</a>
+          <a href="optical-inventory.html">業務システムTOP</a>
         </div>
       </aside>
 
       <main class="workspace">
         <header class="topbar detail-topbar">
           <div>
-            <p class="eyebrow">Queue ticket system</p>
-            <h1>物理ボタンから番号札を発券し、PC監視で呼び出す</h1>
+            <h1>受付・発券</h1>
           </div>
           <div class="top-actions">
             <button type="button" class="ghost-button" id="resetQueue">リセット</button>
@@ -45,56 +43,31 @@
           </div>
         </header>
 
-        <section class="system-flow" id="flow" aria-label="System data flow">
-          <article>
-            <span>1</span>
-            <strong>物理デバイス</strong>
-            <p>受付端末のボタンが押される。USB/HID、Bluetooth、または小型IoT端末を想定。</p>
-          </article>
-          <article>
-            <span>2</span>
-            <strong>PC監視アプリ</strong>
-            <p>常駐アプリが入力イベントを監視し、次番号を採番してキューへ登録。</p>
-          </article>
-          <article>
-            <span>3</span>
-            <strong>番号札発券</strong>
-            <p>プリンタまたは画面表示で番号札を発行。用途別に受付種別も保持。</p>
-          </article>
-          <article>
-            <span>4</span>
-            <strong>音声呼び出し</strong>
-            <p>販売員がPCで呼出操作を行い、物理スピーカーや店内端末から音声案内。</p>
-          </article>
-        </section>
-
         <section class="ticket-lab">
           <article class="panel device-sim" id="device">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Physical device</p>
                 <h2>受付ボタン入力</h2>
               </div>
-              <span class="live-badge" id="deviceState">Standby</span>
+              <span class="live-badge" id="deviceState">待機中</span>
             </div>
             <button type="button" class="device-button" id="deviceButton">
-              <span>PRESS</span>
+              <span>発券</span>
               <strong>番号札発券</strong>
             </button>
             <div class="device-spec-grid">
-              <div><span>Input</span><strong>USB HID / BLE</strong></div>
-              <div><span>Fallback</span><strong>画面ボタン</strong></div>
-              <div><span>Printer</span><strong>80mm receipt</strong></div>
+              <div><span>入力</span><strong>物理ボタン</strong></div>
+              <div><span>代替</span><strong>画面ボタン</strong></div>
+              <div><span>発券</span><strong>レシート印字</strong></div>
             </div>
           </article>
 
           <article class="panel monitor-panel" id="monitor">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">PC monitor</p>
                 <h2>監視ログ</h2>
               </div>
-              <span class="live-badge" id="monitorState">Watching</span>
+              <span class="live-badge" id="monitorState">監視中</span>
             </div>
             <ol class="event-log" id="eventLog">
               <li><time>09:58</time><span>監視アプリ起動。物理デバイス接続を確認。</span></li>
@@ -105,10 +78,9 @@
           <article class="panel call-console" id="calling">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Calling console</p>
                 <h2>販売員呼び出し</h2>
               </div>
-              <span class="live-badge" id="speakerState">Speaker ready</span>
+              <span class="live-badge" id="speakerState">呼出準備完了</span>
             </div>
             <div class="now-ticket">
               <span>次に呼び出す番号</span>
@@ -127,7 +99,6 @@
         <section class="panel requirements-panel" id="requirements">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Requirement notes</p>
               <h2>発券システムの要件メモ</h2>
             </div>
           </div>
