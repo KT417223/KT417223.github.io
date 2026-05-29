@@ -681,6 +681,7 @@ a.roadmap-item.is-ready::after {
 }
 
 .panel {
+  min-width: 0;
   padding: 1rem;
 }
 
@@ -712,9 +713,11 @@ a.roadmap-item.is-ready::after {
 
 .panel-heading {
   display: flex;
+  flex-wrap: wrap;
   align-items: start;
   justify-content: space-between;
   gap: 1rem;
+  min-width: 0;
   margin-bottom: 1rem;
 }
 
@@ -1923,6 +1926,7 @@ a.live-badge:hover {
 }
 
 .table-wrap {
+  min-width: 0;
   overflow-x: auto;
 }
 
