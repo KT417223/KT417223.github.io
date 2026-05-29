@@ -178,6 +178,8 @@ button {
 .sales-layout,
 .estimate-layout,
 .stock-task-layout,
+.stocktake-layout,
+.audit-table-layout,
 .work-board,
 .work-detail-layout,
 .frame-layout,
@@ -401,6 +403,12 @@ button {
 }
 
 .work-detail-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.75fr);
+  margin-bottom: 1rem;
+}
+
+.stocktake-layout,
+.audit-table-layout {
   grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.75fr);
   margin-bottom: 1rem;
 }
@@ -984,6 +992,73 @@ button {
   font-size: 1.15rem;
 }
 
+.scan-device {
+  display: grid;
+  gap: 0.75rem;
+  place-items: center;
+  border: 1px dashed var(--line);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: var(--panel-soft);
+  text-align: center;
+}
+
+.scan-device strong {
+  font-size: clamp(1.25rem, 3vw, 1.85rem);
+}
+
+.scan-device p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.scan-actions,
+.unread-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.scan-actions {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+
+.scan-actions button.active {
+  border-color: var(--green);
+  background: rgba(15, 128, 103, 0.14);
+  color: var(--green-dark);
+}
+
+.unread-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.unread-grid article {
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  padding: 0.85rem;
+  background: var(--panel-soft);
+}
+
+.unread-grid article.read {
+  border-color: color-mix(in srgb, var(--green) 35%, var(--line));
+  background: rgba(15, 128, 103, 0.12);
+}
+
+.unread-grid strong,
+.unread-grid span {
+  display: block;
+}
+
+.unread-grid span {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.5;
+}
+
 .qr-scan-frame {
   display: grid;
   gap: 0.75rem;
@@ -1415,9 +1490,13 @@ th {
   .sales-layout,
   .estimate-layout,
   .stock-task-layout,
+  .stocktake-layout,
+  .audit-table-layout,
   .work-board,
   .work-detail-layout,
   .checklist-grid,
+  .scan-actions,
+  .unread-grid,
   .frame-layout,
   .lens-layout,
   .record-grid,

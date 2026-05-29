@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="QR stocktake system mock for an optical store."
+    />
+    <title>QR Stocktake System Mock</title>
+    <link rel="stylesheet" href="../src/optical-demo.css" />
+  </head>
+  <body>
+    <div class="app-frame">
+      <aside class="side-panel">
+        <a class="brand" href="optical-inventory.html">
+          <span class="brand-mark">QR</span>
+          <span>
+            <strong>QR Stocktake</strong>
+            <small>Requirement mock</small>
+          </span>
+        </a>
+        <nav class="side-nav" aria-label="QR stocktake navigation">
+          <a class="active" href="#scan">Scan</a>
+          <a href="#summary">Summary</a>
+          <a href="#differences">Differences</a>
+          <a href="#unread">Unread</a>
+          <a href="#requirements">Requirements</a>
+        </nav>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar detail-topbar">
+          <div>
+            <p class="eyebrow">QR stocktake system</p>
+            <h1>棚を回りながらQRタグを連続スキャンし、実在庫との差異を即時に見つける棚卸しモック</h1>
+          </div>
+          <div class="top-actions">
+            <button type="button" class="ghost-button" id="resetScan">リセット</button>
+            <button type="button" class="primary-button" id="scanNext">QRを読み込む</button>
+          </div>
+        </header>
+
+        <section class="system-flow" aria-label="QR stocktake flow">
+          <article>
+            <span>1</span>
+            <strong>棚卸し開始</strong>
+            <p>店舗、棚、カテゴリ、担当者を選び、対象在庫リストを読み込む。</p>
+          </article>
+          <article>
+            <span>2</span>
+            <strong>連続スキャン</strong>
+            <p>フレームやコンタクト箱のQRタグをバーっと読み込み、読み取り済みにする。</p>
+          </article>
+          <article>
+            <span>3</span>
+            <strong>差異確認</strong>
+            <p>未読、過剰、不足、別棚混入、他店品番などをその場で確認する。</p>
+          </article>
+          <article>
+            <span>4</span>
+            <strong>調整申請</strong>
+            <p>棚卸し結果を確定し、在庫修正、移動、発注確認のタスクへつなげる。</p>
+          </article>
+        </section>
+
+        <section class="stocktake-layout" id="scan">
+          <article class="panel scan-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Scanner</p>
+                <h2>連続QRスキャン</h2>
+              </div>
+              <span class="live-badge" id="scanState">Ready</span>
+            </div>
+            <div class="scan-device">
+              <div class="qr-box large" aria-label="QR scanner mock"></div>
+              <strong id="lastScanCode">Scan standby</strong>
+              <p id="lastScanText">次のQRタグを読み込んでください。</p>
+            </div>
+            <div class="scan-actions">
+              <button type="button" class="ghost-button" data-category="frame">フレーム棚</button>
+              <button type="button" class="ghost-button" data-category="lens">レンズ棚</button>
+              <button type="button" class="ghost-button" data-category="contact">コンタクト棚</button>
+            </div>
+          </article>
+
+          <article class="panel stocktake-session-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Session</p>
+                <h2>棚卸し条件</h2>
+              </div>
+              <span class="live-badge">Store A</span>
+            </div>
+            <dl class="member-spec">
+              <div><dt>対象</dt><dd id="targetCategory">フレーム棚 A-01</dd></div>
+              <div><dt>担当者</dt><dd>田中 / 佐藤</dd></div>
+              <div><dt>開始</dt><dd>2026-05-29 16:30</dd></div>
+              <div><dt>モード</dt><dd>差異が出た品番のみ確認</dd></div>
+            </dl>
+          </article>
+        </section>
+
+        <section class="work-summary-grid" id="summary">
+          <article>
+            <span>対象</span>
+            <strong id="targetCount">8</strong>
+            <small>今回の棚卸し対象SKU</small>
+          </article>
+          <article>
+            <span>読取済</span>
+            <strong id="scannedCount">0</strong>
+            <small id="scanRate">0% complete</small>
+          </article>
+          <article>
+            <span>差異</span>
+            <strong id="differenceCount">0</strong>
+            <small>過剰・不足・別棚混入</small>
+          </article>
+          <article>
+            <span>未読</span>
+            <strong id="unreadCount">8</strong>
+            <small>棚または台帳の再確認</small>
+          </article>
+        </section>
+
+        <section class="audit-table-layout">
+          <article class="panel audit-list-panel" id="differences">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Scanned items</p>
+                <h2>読み取りログ</h2>
+              </div>
+              <span class="live-badge" id="scanLogCount">0 scans</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>QR</th>
+                    <th>品番</th>
+                    <th>カテゴリ</th>
+                    <th>判定</th>
+                  </tr>
+                </thead>
+                <tbody id="scanLog"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel difference-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Difference review</p>
+                <h2>差異確認</h2>
+              </div>
+              <span class="live-badge" id="reviewState">Watching</span>
+            </div>
+            <div class="allocation-list" id="differenceList">
+              <article>
+                <span class="status ready">OK</span>
+                <strong>スキャン待ち</strong>
+                <p>QRを読み込むと、差異がある品番だけここに表示されます。</p>
+              </article>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel unread-panel" id="unread">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Unread list</p>
+              <h2>未読・再確認リスト</h2>
+            </div>
+            <span class="live-badge" id="unreadState">8 remaining</span>
+          </div>
+          <div class="unread-grid" id="unreadGrid">
+            <article data-code="FR-CL-4820-C1">
+              <strong>FR-CL-4820-C1</strong>
+              <span>Classic 48□20 C1 / 台帳 2本</span>
+            </article>
+            <article data-code="FR-CL-4820-C2">
+              <strong>FR-CL-4820-C2</strong>
+              <span>Classic 48□20 C2 / 台帳 1本</span>
+            </article>
+            <article data-code="FR-KD-4412">
+              <strong>FR-KD-4412</strong>
+              <span>Kids 44□16 / 台帳 3本</span>
+            </article>
+            <article data-code="LN-167-PROG-R">
+              <strong>LN-167-PROG-R</strong>
+              <span>1.67 遠近 R / 台帳 0枚</span>
+            </article>
+            <article data-code="LN-160-AS-L">
+              <strong>LN-160-AS-L</strong>
+              <span>1.60 AS L / 台帳 4枚</span>
+            </article>
+            <article data-code="CL-1D-250">
+              <strong>CL-1D-250</strong>
+              <span>1day -2.50 / 台帳 12箱</span>
+            </article>
+            <article data-code="CL-2W-300">
+              <strong>CL-2W-300</strong>
+              <span>2week -3.00 / 台帳 8箱</span>
+            </article>
+            <article data-code="CL-TORIC-175">
+              <strong>CL-TORIC-175</strong>
+              <span>乱視用 -1.75 CYL -0.75 / 台帳 5箱</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel requirements-panel" id="requirements">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Requirements</p>
+              <h2>必要要件</h2>
+            </div>
+          </div>
+          <div class="requirements-grid">
+            <article>
+              <h3>連続読取</h3>
+              <ul>
+                <li>QRタグを連続スキャン</li>
+                <li>読取音と最終読取品番を表示</li>
+                <li>棚・カテゴリを切り替え可能</li>
+              </ul>
+            </article>
+            <article>
+              <h3>差異検出</h3>
+              <ul>
+                <li>未読、過剰、不足を自動判定</li>
+                <li>別棚混入や他店品番を警告</li>
+                <li>差異品番だけ再確認リスト化</li>
+              </ul>
+            </article>
+            <article>
+              <h3>在庫反映</h3>
+              <ul>
+                <li>棚卸し結果の確定申請</li>
+                <li>在庫修正履歴を保存</li>
+                <li>不足品は発注確認へ接続</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../src/qr-stocktake-system.js"></script>
+  </body>
+</html>
