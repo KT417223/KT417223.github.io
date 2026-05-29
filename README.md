@@ -30,6 +30,7 @@ python3 -m http.server 5173
 │   └── portfolio-hero.png
 ├── demos
 │   └── optical-inventory.html
+│   └── design-principles.html
 │   └── queue-ticket-system.html
 │   └── member-lookup-system.html
 │   └── prescription-input-system.html

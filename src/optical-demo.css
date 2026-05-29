@@ -266,6 +266,7 @@ textarea:focus-visible {
 
 .module-map,
 .store-flow,
+.principle-hero,
 .roadmap-grid,
 .kpi-grid,
 .metric-controls,
@@ -304,6 +305,11 @@ textarea:focus-visible {
   border-radius: 0.85rem;
   background: color-mix(in srgb, var(--panel) 88%, transparent);
   box-shadow: 0 8px 26px rgba(21, 32, 28, 0.05);
+}
+
+.principle-hero {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 1rem;
 }
 
 .system-flow {
@@ -428,6 +434,7 @@ a.roadmap-item.is-ready::after {
 
 .module-map article,
 .store-flow article,
+.principle-hero article,
 .system-flow article,
 .kpi-grid article,
 .panel {
@@ -453,6 +460,31 @@ a.roadmap-item.is-ready::after {
   border-radius: 0.65rem;
   padding: 0.9rem;
   background: var(--panel);
+}
+
+.principle-hero article {
+  display: grid;
+  gap: 0.65rem;
+  min-height: 14rem;
+  padding: 1.2rem;
+}
+
+.principle-hero span {
+  color: var(--green-dark);
+  font-size: 0.82rem;
+  font-weight: 950;
+}
+
+.principle-hero strong {
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+
+.principle-hero p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.7;
 }
 
 .store-flow article:not(:last-child)::after {
@@ -1144,6 +1176,13 @@ a.live-badge:hover {
   background: var(--green);
 }
 
+.table-link {
+  color: var(--green-dark);
+  font-weight: 950;
+  text-decoration: underline;
+  text-underline-offset: 0.18rem;
+}
+
 .csv-preview {
   min-height: 16rem;
   overflow: auto;
@@ -1429,6 +1468,36 @@ a.live-badge:hover {
   color: var(--muted);
   font-weight: 750;
   line-height: 1.5;
+}
+
+.function-map {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.function-map article {
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  padding: 1rem;
+  background: var(--panel-soft);
+}
+
+.function-map span {
+  color: var(--green-dark);
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
+.function-map strong {
+  display: block;
+  margin: 0.35rem 0;
+}
+
+.function-map p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 .qr-scan-frame {
@@ -1886,6 +1955,7 @@ th {
 
   .module-map,
   .store-flow,
+  .principle-hero,
   .roadmap-grid,
   .system-flow,
   .kpi-grid,
@@ -1913,6 +1983,7 @@ th {
   .lens-layout,
   .record-grid,
   .requirements-grid,
+  .function-map,
   .ticket-layout,
   .member-card,
   .frame-tag-card {
