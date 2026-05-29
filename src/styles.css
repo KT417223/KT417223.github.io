@@ -44,6 +44,12 @@ a {
   text-decoration: none;
 }
 
+a[href]:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(15, 128, 103, 0.32);
+  outline-offset: 3px;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -101,12 +107,20 @@ img {
   color: var(--muted);
   font-size: 0.94rem;
   font-weight: 800;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
 }
 
 .nav-links a:hover,
 .nav-links a[aria-current] {
   background: var(--surface-soft);
   color: var(--ink);
+}
+
+.nav-links a:hover {
+  transform: translateY(-1px);
 }
 
 main {
@@ -202,11 +216,27 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.45rem;
   min-height: 2.9rem;
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: 0.55rem;
   padding: 0 1rem;
   font-weight: 900;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.button::after {
+  content: "→";
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(23, 33, 29, 0.14);
 }
 
 .button-primary {

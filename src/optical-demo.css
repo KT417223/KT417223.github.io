@@ -38,6 +38,22 @@ button {
   font: inherit;
 }
 
+a[href],
+button,
+label:has(input),
+select {
+  -webkit-tap-highlight-color: rgba(15, 128, 103, 0.18);
+}
+
+a[href]:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(49, 95, 154, 0.34);
+  outline-offset: 3px;
+}
+
 .app-frame {
   display: grid;
   grid-template-columns: 17rem minmax(0, 1fr);
@@ -102,12 +118,20 @@ button {
   padding: 0.8rem;
   color: var(--muted);
   font-weight: 800;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
 }
 
 .side-nav a:hover,
 .side-nav a.active {
   background: var(--panel-soft);
   color: var(--ink);
+}
+
+.side-nav a:hover {
+  transform: translateX(2px);
 }
 
 .workspace {
@@ -152,12 +176,32 @@ button {
   color: var(--ink);
   cursor: pointer;
   font-weight: 900;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .primary-button {
   border-color: var(--green);
   background: var(--green);
   color: white;
+}
+
+.primary-button:hover,
+.ghost-button:hover,
+.icon-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(21, 32, 28, 0.1);
+}
+
+.ghost-button:hover,
+.icon-button:hover {
+  border-color: var(--green);
+  background: rgba(15, 128, 103, 0.1);
+  color: var(--green-dark);
 }
 
 .icon-button {
@@ -242,15 +286,37 @@ button {
   border-radius: 0.75rem;
   background: color-mix(in srgb, var(--panel) 94%, transparent);
   box-shadow: 0 8px 26px rgba(21, 32, 28, 0.05);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .roadmap-item.is-ready {
   border-color: color-mix(in srgb, var(--green) 28%, var(--line));
+  cursor: pointer;
 }
 
 .roadmap-item.is-ready:hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 34px rgba(21, 32, 28, 0.1);
+}
+
+a.roadmap-item.is-ready::after {
+  align-self: end;
+  width: fit-content;
+  margin-top: 0.25rem;
+  border-radius: 999px;
+  padding: 0.28rem 0.62rem;
+  background: var(--green);
+  color: white;
+  content: "開く →";
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
+.roadmap-item:not(a) {
+  cursor: default;
 }
 
 .roadmap-item strong {
@@ -499,17 +565,52 @@ button {
   color: var(--green-dark);
   cursor: pointer;
   font-weight: 900;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.call-list button:hover {
+  border-color: var(--green);
+  background: rgba(15, 128, 103, 0.12);
+  transform: translateY(-1px);
 }
 
 .live-badge {
   display: inline-flex;
   align-items: center;
+  gap: 0.35rem;
   border-radius: 999px;
   padding: 0.35rem 0.65rem;
-  background: rgba(15, 128, 103, 0.14);
-  color: var(--green-dark);
+  border: 1px solid var(--line);
+  background: var(--panel-soft);
+  color: var(--muted);
   font-size: 0.8rem;
   font-weight: 900;
+  white-space: nowrap;
+}
+
+a.live-badge {
+  border-color: var(--green);
+  background: rgba(15, 128, 103, 0.14);
+  color: var(--green-dark);
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+a.live-badge::after {
+  content: "→";
+}
+
+a.live-badge:hover {
+  background: var(--green);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(21, 32, 28, 0.1);
 }
 
 .detail-topbar {
@@ -644,6 +745,11 @@ button {
   color: var(--ink);
   cursor: pointer;
   font-weight: 900;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .search-mode-grid button {
@@ -656,6 +762,13 @@ button {
   border-color: var(--green);
   background: rgba(15, 128, 103, 0.14);
   color: var(--green-dark);
+}
+
+.search-mode-grid button:hover,
+.candidate-card:hover {
+  border-color: var(--green);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(21, 32, 28, 0.08);
 }
 
 .lookup-form label {
@@ -710,12 +823,21 @@ button {
   color: var(--ink);
   cursor: pointer;
   font-weight: 900;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
 }
 
 .exam-step-list button.active {
   border-color: var(--green);
   background: rgba(15, 128, 103, 0.14);
   color: var(--green-dark);
+}
+
+.exam-step-list button:hover {
+  border-color: var(--green);
+  transform: translateY(-1px);
 }
 
 .prescription-input-panel {
@@ -829,6 +951,17 @@ button {
   padding: 0.85rem;
   background: var(--panel-soft);
   cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.line-item:hover {
+  border-color: var(--green);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(21, 32, 28, 0.08);
 }
 
 .line-item input {
@@ -941,11 +1074,22 @@ button {
   color: var(--ink);
   cursor: pointer;
   text-align: left;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .work-card.active {
   border-color: var(--green);
   background: rgba(15, 128, 103, 0.14);
+}
+
+.work-card:hover {
+  border-color: var(--green);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(21, 32, 28, 0.08);
 }
 
 .work-card span,
@@ -1029,6 +1173,18 @@ button {
   border-color: var(--green);
   background: rgba(15, 128, 103, 0.14);
   color: var(--green-dark);
+}
+
+.scan-actions button {
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.scan-actions button:hover {
+  border-color: var(--green);
+  transform: translateY(-1px);
 }
 
 .unread-grid {
@@ -1314,6 +1470,7 @@ button {
   padding: 0.32rem 0.55rem;
   font-size: 0.76rem;
   font-weight: 900;
+  cursor: default;
 }
 
 .waiting {
@@ -1389,6 +1546,11 @@ button {
   color: var(--muted);
   cursor: pointer;
   font-weight: 900;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
 }
 
 .inventory-link-tab {
@@ -1401,6 +1563,26 @@ button {
   background: rgba(15, 128, 103, 0.14);
   color: var(--green-dark);
   font-weight: 900;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.inventory-link-tab::after {
+  margin-left: 0.35rem;
+  content: "→";
+}
+
+.inventory-tabs button:hover,
+.inventory-link-tab:hover {
+  border-color: var(--green);
+  transform: translateY(-1px);
+}
+
+.inventory-link-tab:hover {
+  background: var(--green);
+  color: white;
 }
 
 .alert-list {
