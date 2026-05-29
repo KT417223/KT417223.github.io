@@ -71,12 +71,12 @@ copyPrevious.addEventListener("click", () => {
   Object.entries(previousValues).forEach(([key, value]) => {
     fields[key].value = value;
   });
-  rxState.textContent = "Previous copied";
+  rxState.textContent = "前回値反映済み";
   updateSummary();
 });
 
 savePrescription.addEventListener("click", () => {
-  rxState.textContent = "Saved";
+  rxState.textContent = "保存済み";
   const saved = document.createElement("article");
   saved.innerHTML = `
     <div>
@@ -86,7 +86,7 @@ savePrescription.addEventListener("click", () => {
     <span class="status ready">保存済</span>
   `;
   rxHistory.prepend(saved);
-  historyCount.textContent = `${rxHistory.children.length} records`;
+  historyCount.textContent = `${rxHistory.children.length}件`;
 });
 
 stepButtons.forEach((button) => {

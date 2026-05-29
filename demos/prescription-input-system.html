@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Prescription input system demo for an optical store."
+      content="眼鏡店向けの処方入力画面。レンズ度数、PD、用途メモ、処方履歴を確認する。"
     />
-    <title>Prescription Input System Demo</title>
+    <title>処方入力</title>
     <link rel="stylesheet" href="../src/optical-demo.css" />
   </head>
   <body>
@@ -16,28 +16,27 @@
         <a class="brand" href="optical-inventory.html">
           <span class="brand-mark">RX</span>
           <span>
-            <strong>Prescription Input</strong>
-            <small>System demo</small>
+            <strong>処方入力</strong>
+            <small>業務システム</small>
           </span>
         </a>
-        <nav class="side-nav" aria-label="Prescription navigation">
-          <a class="active" href="#exam">Exam</a>
-          <a href="#input">Input</a>
-          <a href="#history">History</a>
-          <a href="#member-note">Member note</a>
-          <a href="#requirements">Requirements</a>
+        <nav class="side-nav" aria-label="処方入力ナビゲーション">
+          <a class="active" href="#exam">対象会員</a>
+          <a href="#input">度数入力</a>
+          <a href="#history">処方履歴</a>
+          <a href="#member-note">会員備考</a>
+          <a href="#requirements">設計メモ</a>
         </nav>
-        <div class="home-links" aria-label="Home links">
-          <a href="../index.html">Portfolio Home</a>
-          <a href="optical-inventory.html">System Top</a>
+        <div class="home-links" aria-label="戻りリンク">
+          <a href="../index.html">ポートフォリオTOP</a>
+          <a href="optical-inventory.html">業務システムTOP</a>
         </div>
       </aside>
 
       <main class="workspace">
         <header class="topbar detail-topbar">
           <div>
-            <p class="eyebrow">Prescription input system</p>
-            <h1>測定結果をレンズ度数として記録し、販売・加工へつなげる処方入力システム</h1>
+            <h1>処方入力</h1>
           </div>
           <div class="top-actions">
             <button type="button" class="ghost-button" id="copyPrevious">前回値を反映</button>
@@ -45,37 +44,13 @@
           </div>
         </header>
 
-        <section class="system-flow" aria-label="Prescription flow">
-          <article>
-            <span>1</span>
-            <strong>会員呼び出し</strong>
-            <p>QR会員証や会員検索から対象顧客を開き、過去のレンズ度数・購入履歴を確認。</p>
-          </article>
-          <article>
-            <span>2</span>
-            <strong>測定値入力</strong>
-            <p>SPH/CYL/ADDは0.25刻み、AXISは角度、PDはmmで入力し、左右差を見ながら調整。</p>
-          </article>
-          <article>
-            <span>3</span>
-            <strong>用途メモ</strong>
-            <p>遠用、近用、常用、PC作業、運転など、販売提案に必要な利用シーンを記録。</p>
-          </article>
-          <article>
-            <span>4</span>
-            <strong>販売へ連携</strong>
-            <p>保存した処方を見積・販売登録、レンズ在庫確認、加工指示へ引き渡す。</p>
-          </article>
-        </section>
-
         <section class="prescription-layout" id="exam">
           <article class="panel customer-summary-panel">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Customer</p>
                 <h2>対象会員</h2>
               </div>
-              <a class="live-badge" href="member-lookup-system.html">Member Detail</a>
+              <a class="live-badge" href="member-lookup-system.html">会員照合へ</a>
             </div>
             <div class="customer-summary-card">
               <strong>A-1024 サンプル 太郎</strong>
@@ -90,10 +65,9 @@
           <article class="panel exam-status-panel">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Exam status</p>
                 <h2>測定ステータス</h2>
               </div>
-              <span class="live-badge" id="rxState">Draft</span>
+              <span class="live-badge" id="rxState">編集中</span>
             </div>
             <div class="exam-step-list">
               <button type="button" class="active" data-step="予備検査">予備検査</button>
@@ -107,10 +81,9 @@
         <section class="panel prescription-input-panel" id="input">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Lens prescription</p>
               <h2>レンズ度数入力</h2>
             </div>
-            <span class="live-badge">0.25 step</span>
+            <span class="live-badge">0.25刻み</span>
           </div>
           <div class="prescription-editor">
             <div class="prescription-table-wrap">
@@ -166,21 +139,19 @@
               </div>
             </div>
           </div>
-          <p class="helper-text">SPH/CYL/ADDは0.25刻み、AXISは0から180度、PDは片眼PDと合計PDを確認できる想定です。</p>
         </section>
 
         <section class="panel purchase-history-panel" id="history">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Prescription history</p>
               <h2>処方履歴</h2>
             </div>
-            <span class="live-badge" id="historyCount">3 records</span>
+            <span class="live-badge" id="historyCount">3件</span>
           </div>
           <div class="history-list" id="rxHistory">
             <article>
               <div>
-                <strong>2026-05-29 Draft</strong>
+                <strong>2026-05-29 編集中</strong>
                 <p id="currentSummary">R -2.25 / -0.75 x 180 ADD +1.50、L -2.00 / -0.50 x 170 ADD +1.50、PD 63.5 mm</p>
               </div>
               <span class="status progress">編集中</span>
@@ -205,10 +176,9 @@
         <section class="panel member-record-panel" id="member-note">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Member note</p>
               <h2>会員記録への反映</h2>
             </div>
-            <span class="live-badge">Linked</span>
+            <span class="live-badge">連携済み</span>
           </div>
           <div class="record-grid">
             <article>
@@ -229,8 +199,7 @@
         <section class="panel requirements-panel" id="requirements">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Requirements</p>
-              <h2>必要要件</h2>
+              <h2>処方入力の要件メモ</h2>
             </div>
           </div>
           <div class="requirements-grid">
