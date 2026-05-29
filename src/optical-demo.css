@@ -115,10 +115,8 @@ textarea:focus-visible {
 
 .home-links {
   display: grid;
-  gap: 0.8rem;
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid var(--line);
+  gap: 0.35rem;
+  margin-top: -1.2rem;
 }
 
 .home-links a {
@@ -126,13 +124,13 @@ textarea:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  min-height: 2.6rem;
-  border: 1px solid var(--line);
+  min-height: 2.75rem;
+  border: 1px solid transparent;
   border-radius: 0.55rem;
-  padding: 0 0.75rem;
-  background: var(--panel);
-  color: var(--green-dark);
-  font-size: 0.86rem;
+  padding: 0 0.8rem;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.9rem;
   font-weight: 950;
   transition:
     border-color 160ms ease,
@@ -142,13 +140,13 @@ textarea:focus-visible {
 }
 
 .home-links a:first-child {
-  background: transparent;
   color: var(--muted);
 }
 
 .home-links a + a {
-  border-color: var(--green);
+  border-color: color-mix(in srgb, var(--green) 26%, var(--line));
   background: rgba(15, 128, 103, 0.12);
+  color: var(--green-dark);
 }
 
 .home-links a::after {
@@ -158,8 +156,7 @@ textarea:focus-visible {
 .home-links a:hover {
   border-color: var(--green);
   background: rgba(15, 128, 103, 0.1);
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(21, 32, 28, 0.08);
+  transform: translateX(2px);
 }
 
 .side-nav a {
@@ -1706,7 +1703,7 @@ th {
   .home-links {
     grid-template-columns: 1fr;
     max-width: 22rem;
-    margin-top: 0;
+    margin-top: -1rem;
   }
 
   .topbar {
