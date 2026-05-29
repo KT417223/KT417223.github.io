@@ -115,7 +115,7 @@ textarea:focus-visible {
 
 .home-links {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.8rem;
   margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid var(--line);
@@ -139,6 +139,16 @@ textarea:focus-visible {
     background 160ms ease,
     box-shadow 160ms ease,
     transform 160ms ease;
+}
+
+.home-links a:first-child {
+  background: transparent;
+  color: var(--muted);
+}
+
+.home-links a + a {
+  border-color: var(--green);
+  background: rgba(15, 128, 103, 0.12);
 }
 
 .home-links a::after {
@@ -1694,7 +1704,8 @@ th {
   }
 
   .home-links {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
+    max-width: 22rem;
     margin-top: 0;
   }
 
