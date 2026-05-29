@@ -34,6 +34,7 @@ python3 -m http.server 5173
 │   └── member-lookup-system.html
 │   └── prescription-input-system.html
 │   └── sales-registration-system.html
+│   └── sales-analytics-system.html
 │   └── processing-inspection-system.html
 │   └── qr-stocktake-system.html
 │   └── frame-inventory-system.html
@@ -48,6 +49,7 @@ python3 -m http.server 5173
 │   ├── member-lookup-system.js
 │   ├── prescription-input-system.js
 │   ├── sales-registration-system.js
+│   ├── sales-analytics-system.js
 │   ├── processing-inspection-system.js
 │   ├── qr-stocktake-system.js
 │   ├── frame-inventory-system.js

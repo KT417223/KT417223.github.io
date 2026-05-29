@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sales analytics system demo for an optical store with CSV export."
+    />
+    <title>Sales Analytics System Demo</title>
+    <link rel="stylesheet" href="../src/optical-demo.css" />
+  </head>
+  <body>
+    <div class="app-frame">
+      <aside class="side-panel">
+        <a class="brand" href="optical-inventory.html">
+          <span class="brand-mark">SA</span>
+          <span>
+            <strong>Sales Analytics</strong>
+            <small>System demo</small>
+          </span>
+        </a>
+        <nav class="side-nav" aria-label="Sales analytics navigation">
+          <a class="active" href="#summary">Summary</a>
+          <a href="#staff">Staff</a>
+          <a href="#product">Product</a>
+          <a href="#customer">Customer</a>
+          <a href="#export">Export</a>
+        </nav>
+        <div class="home-links" aria-label="Home links">
+          <a href="../index.html">Portfolio Home</a>
+          <a href="optical-inventory.html">System Top</a>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar detail-topbar">
+          <div>
+            <p class="eyebrow">Sales analytics</p>
+            <h1>売上、担当者、商品属性、顧客属性を確認し、CSVで出力できる売上分析システム</h1>
+          </div>
+          <div class="top-actions">
+            <button type="button" class="ghost-button" id="copyCsv">CSVをプレビュー</button>
+            <button type="button" class="primary-button" id="downloadCsv">CSV出力</button>
+          </div>
+        </header>
+
+        <section class="sales-filter-bar" aria-label="Sales filters">
+          <label>
+            <span>期間</span>
+            <select id="periodFilter">
+              <option>本日</option>
+              <option>今週</option>
+              <option>今月</option>
+            </select>
+          </label>
+          <label>
+            <span>店舗</span>
+            <select>
+              <option>Store A</option>
+              <option>Store B</option>
+              <option>全店舗</option>
+            </select>
+          </label>
+          <label>
+            <span>表示軸</span>
+            <select id="axisFilter">
+              <option>担当者別</option>
+              <option>商品カテゴリ別</option>
+              <option>顧客属性別</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="work-summary-grid" id="summary">
+          <article>
+            <span>売上</span>
+            <strong id="totalSales">642,000円</strong>
+            <small>前日比 +12.4%</small>
+          </article>
+          <article>
+            <span>販売件数</span>
+            <strong id="salesCount">18件</strong>
+            <small>新規 7件 / 再購入 11件</small>
+          </article>
+          <article>
+            <span>客単価</span>
+            <strong id="averagePrice">35,700円</strong>
+            <small>保証追加 5件</small>
+          </article>
+          <article>
+            <span>成約率</span>
+            <strong id="conversionRate">72%</strong>
+            <small>接客 25件中 18件</small>
+          </article>
+        </section>
+
+        <section class="analytics-layout" id="staff">
+          <article class="panel analytics-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Staff performance</p>
+                <h2>担当者別</h2>
+              </div>
+              <span class="live-badge">Today</span>
+            </div>
+            <div class="analytics-bars" id="staffBars"></div>
+          </article>
+
+          <article class="panel analytics-panel" id="product">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Product attributes</p>
+                <h2>商品属性</h2>
+              </div>
+              <span class="live-badge">Category</span>
+            </div>
+            <div class="analytics-bars" id="productBars"></div>
+          </article>
+        </section>
+
+        <section class="analytics-layout">
+          <article class="panel analytics-panel" id="customer">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Customer attributes</p>
+                <h2>顧客属性</h2>
+              </div>
+              <span class="live-badge">Segment</span>
+            </div>
+            <div class="analytics-bars" id="customerBars"></div>
+          </article>
+
+          <article class="panel export-panel" id="export">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">CSV export</p>
+                <h2>出力プレビュー</h2>
+              </div>
+              <span class="live-badge" id="exportState">Ready</span>
+            </div>
+            <pre class="csv-preview" id="csvPreview"></pre>
+          </article>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Sales records</p>
+              <h2>売上一覧</h2>
+            </div>
+            <span class="live-badge">18 records</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>時刻</th>
+                  <th>担当</th>
+                  <th>カテゴリ</th>
+                  <th>顧客属性</th>
+                  <th>金額</th>
+                </tr>
+              </thead>
+              <tbody id="salesRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../src/sales-analytics-system.js"></script>
+  </body>
+</html>

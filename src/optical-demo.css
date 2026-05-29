@@ -279,6 +279,7 @@ textarea:focus-visible {
 .stock-task-layout,
 .stocktake-layout,
 .audit-table-layout,
+.analytics-layout,
 .work-board,
 .work-detail-layout,
 .frame-layout,
@@ -590,7 +591,8 @@ a.roadmap-item.is-ready::after {
 }
 
 .stocktake-layout,
-.audit-table-layout {
+.audit-table-layout,
+.analytics-layout {
   grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.75fr);
   margin-bottom: 1rem;
 }
@@ -1024,6 +1026,8 @@ a.live-badge:hover {
 }
 
 .payment-grid,
+.sales-filter-bar,
+.analytics-bars,
 .line-item-list,
 .allocation-list,
 .receipt-actions {
@@ -1035,13 +1039,24 @@ a.live-badge:hover {
   grid-template-columns: 1fr;
 }
 
+.sales-filter-bar {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--panel) 94%, transparent);
+}
+
 .payment-grid label,
+.sales-filter-bar label,
 .discount-control {
   display: grid;
   gap: 0.35rem;
 }
 
 .payment-grid span,
+.sales-filter-bar span,
 .discount-control span {
   color: var(--muted);
   font-size: 0.82rem;
@@ -1050,6 +1065,7 @@ a.live-badge:hover {
 
 .payment-grid input,
 .payment-grid select,
+.sales-filter-bar select,
 .discount-control input {
   width: 100%;
   min-height: 2.65rem;
@@ -1060,6 +1076,49 @@ a.live-badge:hover {
   color: var(--ink);
   font: inherit;
   font-weight: 800;
+}
+
+.analytics-bar {
+  display: grid;
+  gap: 0.55rem;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  padding: 0.85rem;
+  background: var(--panel-soft);
+}
+
+.analytics-bar div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.analytics-bar span {
+  color: var(--green-dark);
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.analytics-bar i {
+  display: block;
+  width: var(--bar-width);
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--green);
+}
+
+.csv-preview {
+  min-height: 16rem;
+  overflow: auto;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  padding: 1rem;
+  background: #101916;
+  color: #dcebe5;
+  font-size: 0.85rem;
+  line-height: 1.65;
 }
 
 .line-item {
@@ -1806,6 +1865,8 @@ th {
   .stock-task-layout,
   .stocktake-layout,
   .audit-table-layout,
+  .analytics-layout,
+  .sales-filter-bar,
   .work-board,
   .work-detail-layout,
   .checklist-grid,
