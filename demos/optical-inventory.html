@@ -23,7 +23,6 @@
         <nav class="side-nav" aria-label="Demo navigation">
           <a class="active" href="#dashboard">概要</a>
           <a href="design-principles.html">設計思想</a>
-          <a href="#roadmap">実装状況</a>
           <a href="#queue">受付・発券</a>
           <a href="#members">会員照合</a>
           <a href="#purchase">発注</a>
@@ -39,7 +38,6 @@
       <main class="workspace">
         <header class="topbar">
           <div>
-            <p class="eyebrow">Optical retail operations</p>
             <h1>OptiFlow Retail Suite</h1>
             <p class="topbar-lead">受付、会員照合、販売、在庫、加工、棚卸しまでをひとつながりで管理する眼鏡店向け業務システム。</p>
           </div>
@@ -78,58 +76,6 @@
           </article>
         </section>
 
-        <section class="roadmap-section" id="roadmap" aria-labelledby="roadmapTitle">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Workflow roadmap</p>
-              <h2 id="roadmapTitle">眼鏡店業務フローの実装状況</h2>
-            </div>
-            <p>完成済みの詳細画面にすぐ移動でき、これから作る業務も全体像として見える構成。</p>
-          </div>
-          <div class="roadmap-grid">
-            <a class="roadmap-item is-ready" href="queue-ticket-system.html">
-              <strong>待合発券</strong>
-              <small>番号札発券、販売員呼び出し、物理デバイス連携イメージ</small>
-            </a>
-            <a class="roadmap-item is-ready" href="member-lookup-system.html">
-              <strong>会員照合</strong>
-              <small>QR会員証、名前・電話番号検索、度数と購入履歴</small>
-            </a>
-            <a class="roadmap-item is-ready" href="#purchase">
-              <strong>発注</strong>
-              <small>不足品、補充数、帳票作成、メーカー送信用フォーマット</small>
-            </a>
-            <a class="roadmap-item is-ready" href="frame-inventory-system.html">
-              <strong>フレーム在庫</strong>
-              <small>QRタグ、自店数量、他店舗在庫、販売引当</small>
-            </a>
-            <a class="roadmap-item is-ready" href="lens-inventory-system.html">
-              <strong>レンズ在庫</strong>
-              <small>在庫確認、発注ステータス、度数別在庫</small>
-            </a>
-            <a class="roadmap-item is-ready" href="contact-inventory-system.html">
-              <strong>コンタクト在庫</strong>
-              <small>カテゴリ別在庫、取り置き、期限と再発注</small>
-            </a>
-            <a class="roadmap-item is-ready" href="prescription-input-system.html">
-              <strong>視力測定・処方入力</strong>
-              <small>SPH/CYL/AXIS/ADD、PD、処方履歴を会員記録へ接続</small>
-            </a>
-            <a class="roadmap-item is-ready" href="sales-registration-system.html">
-              <strong>見積・販売登録</strong>
-              <small>フレーム・レンズ選択、値引き、販売引当、会計前確認</small>
-            </a>
-            <a class="roadmap-item is-ready" href="processing-inspection-system.html">
-              <strong>加工・検品ステータス</strong>
-              <small>加工待ち、加工中、検品、受け渡し待ちを一覧管理</small>
-            </a>
-            <a class="roadmap-item is-ready" href="qr-stocktake-system.html">
-              <strong>QR棚卸し</strong>
-              <small>スタッフがQRを連続スキャンし、実在庫との差分を確認</small>
-            </a>
-          </div>
-        </section>
-
         <section class="metric-controls" aria-label="表示する指標">
           <span>表示する指標</span>
           <label><input type="checkbox" data-metric-toggle="queue" checked /> 呼出待ち</label>
@@ -165,7 +111,6 @@
           <article class="panel queue-panel" id="queue">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Queue ticket</p>
                 <h2>待合発券システム</h2>
               </div>
               <a class="live-badge" href="queue-ticket-system.html">Detail</a>
@@ -187,7 +132,6 @@
           <article class="panel member-panel" id="members">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Member lookup</p>
                 <h2>QR会員照合</h2>
               </div>
               <a class="live-badge" href="member-lookup-system.html">Detail</a>
@@ -209,7 +153,6 @@
           <article class="panel wide" id="sales">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Sales analytics</p>
                 <h2>売上確認・販売傾向</h2>
               </div>
               <a class="live-badge" href="sales-analytics-system.html">Analytics Detail</a>
@@ -241,7 +184,6 @@
           <article class="panel purchase-panel" id="purchase">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Purchase</p>
                 <h2>発注・帳票作成</h2>
               </div>
               <button type="button" class="ghost-button">メール作成</button>
@@ -269,7 +211,6 @@
           <article class="panel inventory-panel" id="inventory">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Inventory</p>
                 <h2>フレーム・レンズ・コンタクト在庫</h2>
               </div>
               <a class="live-badge" href="frame-inventory-system.html">Frame Detail</a>
