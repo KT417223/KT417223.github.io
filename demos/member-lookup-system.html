@@ -23,7 +23,6 @@
         <nav class="side-nav" aria-label="会員照合ナビゲーション">
           <a class="active" href="#search">検索</a>
           <a href="#results">候補一覧</a>
-          <a href="#history">購入履歴</a>
           <a href="#requirements">設計メモ</a>
         </nav>
         <div class="home-links" aria-label="戻りリンク">
@@ -111,41 +110,64 @@
           </div>
         </section>
 
-        <section class="panel purchase-history-panel" id="history">
+        <section class="panel member-record-panel" id="memberRecord" hidden>
           <div class="panel-heading">
             <div>
-              <h2>購入履歴</h2>
+              <h2>会員カルテ</h2>
             </div>
-            <span class="live-badge">4件</span>
+            <span class="live-badge" id="selectedMember">A-1024</span>
           </div>
-          <div class="history-list">
+          <div class="record-grid">
             <article>
-              <div>
-                <strong>2026-04-18 / 遠近両用セット</strong>
-                <p>フレーム: Classic 48□20 C1 / レンズ: 1.60 Progressive UV</p>
+              <h3>レンズ度数</h3>
+              <div class="prescription-table-wrap">
+                <table class="prescription-table">
+                  <thead>
+                    <tr>
+                      <th>眼</th>
+                      <th>SPH</th>
+                      <th>CYL</th>
+                      <th>AXIS</th>
+                      <th>ADD</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>R</td>
+                      <td>-2.25</td>
+                      <td>-0.75</td>
+                      <td>180</td>
+                      <td>+1.50</td>
+                    </tr>
+                    <tr>
+                      <td>L</td>
+                      <td>-2.00</td>
+                      <td>-0.50</td>
+                      <td>170</td>
+                      <td>+1.50</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <span class="pill ok">保証中</span>
+              <p class="helper-text">SPH/CYL/ADDは0.25刻み、AXISは角度で管理。PDは 63.5mm。</p>
             </article>
             <article>
-              <div>
-                <strong>2025-11-03 / レンズ交換</strong>
-                <p>レンズ: 1.67 AS Blue Cut / コーティング変更</p>
-              </div>
-              <span class="pill ok">受渡済</span>
+              <h3>特殊属性</h3>
+              <ul class="attribute-list">
+                <li>遠近両用提案対象</li>
+                <li>ブルーライトカット希望</li>
+                <li>鼻パッド調整が必要</li>
+                <li>家族会員あり</li>
+              </ul>
             </article>
             <article>
-              <div>
-                <strong>2025-05-22 / 調整・修理</strong>
-                <p>鼻パッド交換、ネジ交換、フィッティング調整</p>
-              </div>
-              <span class="pill warn">修理履歴</span>
-            </article>
-            <article>
-              <div>
-                <strong>2024-09-14 / コンタクト購入</strong>
-                <p>1day Moist -3.50 / 90枚パック / 定期補充候補</p>
-              </div>
-              <span class="pill ok">購入済</span>
+              <h3>購入・保証履歴</h3>
+              <ul class="attribute-list">
+                <li>2026-04-18: 遠近両用セット / 保証中</li>
+                <li>2025-11-03: レンズ交換 / 受渡済</li>
+                <li>2025-05-22: 鼻パッド交換、ネジ交換</li>
+                <li>2024-09-14: コンタクト購入</li>
+              </ul>
             </article>
           </div>
         </section>
@@ -196,70 +218,6 @@
           </div>
         </section>
 
-        <div class="member-modal" id="memberModal" role="dialog" aria-modal="true" aria-labelledby="memberModalTitle" hidden>
-          <div class="member-modal-card">
-            <div class="modal-heading">
-              <div>
-                <h2 id="memberModalTitle">会員カルテ</h2>
-                <span id="selectedMember">A-1024</span>
-              </div>
-              <button type="button" class="icon-button" id="closeMemberModal" aria-label="会員カルテを閉じる">×</button>
-            </div>
-            <div class="record-grid">
-              <article>
-                <h3>レンズ度数</h3>
-                <div class="prescription-table-wrap">
-                  <table class="prescription-table">
-                    <thead>
-                      <tr>
-                        <th>眼</th>
-                        <th>SPH</th>
-                        <th>CYL</th>
-                        <th>AXIS</th>
-                        <th>ADD</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>R</td>
-                        <td>-2.25</td>
-                        <td>-0.75</td>
-                        <td>180</td>
-                        <td>+1.50</td>
-                      </tr>
-                      <tr>
-                        <td>L</td>
-                        <td>-2.00</td>
-                        <td>-0.50</td>
-                        <td>170</td>
-                        <td>+1.50</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p class="helper-text">SPH/CYL/ADDは0.25刻み、AXISは角度で管理。PDは 63.5mm。</p>
-              </article>
-              <article>
-                <h3>特殊属性</h3>
-                <ul class="attribute-list">
-                  <li>遠近両用提案対象</li>
-                  <li>ブルーライトカット希望</li>
-                  <li>鼻パッド調整が必要</li>
-                  <li>家族会員あり</li>
-                </ul>
-              </article>
-              <article>
-                <h3>購入・保証履歴</h3>
-                <ul class="attribute-list">
-                  <li>最新処方: 2026-04-18</li>
-                  <li>保証: 2027-04まで</li>
-                  <li>修理: ネジ交換 1回</li>
-                  <li>前回購入: 遠近両用セット</li>
-                </ul>
-              </article>
-            </div>
-          </div>
-        </div>
       </main>
     </div>
 

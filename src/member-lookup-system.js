@@ -4,8 +4,7 @@ const lookupForm = document.querySelector("#lookupForm");
 const lookupState = document.querySelector("#lookupState");
 const scanLine = document.querySelector("#scanLine");
 const selectedMember = document.querySelector("#selectedMember");
-const memberModal = document.querySelector("#memberModal");
-const closeMemberModal = document.querySelector("#closeMemberModal");
+const memberRecord = document.querySelector("#memberRecord");
 const modeButtons = [...document.querySelectorAll(".search-mode-grid button")];
 const candidateCards = [...document.querySelectorAll(".candidate-card")];
 const navItems = [...document.querySelectorAll(".side-nav a")];
@@ -20,14 +19,9 @@ function runSearch(source) {
   window.setTimeout(() => setState("検索待ち"), 1200);
 }
 
-function openMemberModal(card) {
+function showMemberRecord(card) {
   selectedMember.textContent = card.dataset.memberLabel || card.dataset.member;
-  memberModal.hidden = false;
-  closeMemberModal.focus();
-}
-
-function closeModal() {
-  memberModal.hidden = true;
+  memberRecord.hidden = false;
 }
 
 scanQr.addEventListener("click", () => {
@@ -57,22 +51,8 @@ candidateCards.forEach((card) => {
   card.addEventListener("click", () => {
     candidateCards.forEach((item) => item.classList.remove("active"));
     card.classList.add("active");
-    openMemberModal(card);
+    showMemberRecord(card);
   });
-});
-
-closeMemberModal.addEventListener("click", closeModal);
-
-memberModal.addEventListener("click", (event) => {
-  if (event.target === memberModal) {
-    closeModal();
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !memberModal.hidden) {
-    closeModal();
-  }
 });
 
 navItems.forEach((item) => {

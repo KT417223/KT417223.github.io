@@ -1579,50 +1579,6 @@ a.live-badge:hover {
   margin: 0 0 0.75rem;
 }
 
-.member-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 40;
-  display: grid;
-  place-items: center;
-  padding: 1.25rem;
-  background: rgba(21, 32, 28, 0.42);
-}
-
-.member-modal[hidden] {
-  display: none;
-}
-
-.member-modal-card {
-  width: min(58rem, 100%);
-  max-height: min(44rem, calc(100vh - 2.5rem));
-  overflow: auto;
-  border: 1px solid var(--line);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  background: var(--panel);
-  box-shadow: 0 28px 70px rgba(21, 32, 28, 0.24);
-}
-
-.modal-heading {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.modal-heading h2 {
-  margin: 0;
-}
-
-.modal-heading span {
-  display: block;
-  margin-top: 0.35rem;
-  color: var(--muted);
-  font-weight: 900;
-}
-
 .attribute-list {
   display: grid;
   gap: 0.45rem;
