@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Member lookup system demo for an optical store."
+      content="眼鏡店向けの会員照合画面。QR会員証、氏名、電話番号、会員番号から顧客カルテを確認する。"
     />
-    <title>Member Lookup System Demo</title>
+    <title>会員照合</title>
     <link rel="stylesheet" href="../src/optical-demo.css" />
   </head>
   <body>
@@ -16,27 +16,27 @@
         <a class="brand" href="optical-inventory.html">
           <span class="brand-mark">ML</span>
           <span>
-            <strong>Member Lookup</strong>
-            <small>System demo</small>
+            <strong>会員照合</strong>
+            <small>業務システム</small>
           </span>
         </a>
-        <nav class="side-nav" aria-label="Member lookup navigation">
-          <a class="active" href="#search">Search</a>
-          <a href="#results">Results</a>
-          <a href="#record">Prescription</a>
-          <a href="#history">History</a>
-          <a href="#requirements">Requirements</a>
+        <nav class="side-nav" aria-label="会員照合ナビゲーション">
+          <a class="active" href="#search">検索</a>
+          <a href="#results">候補一覧</a>
+          <a href="#record">会員カルテ</a>
+          <a href="#history">購入履歴</a>
+          <a href="#requirements">設計メモ</a>
         </nav>
-        <div class="home-links" aria-label="Home links">
-          <a href="../index.html">Portfolio Home</a>
-          <a href="optical-inventory.html">System Top</a>
+        <div class="home-links" aria-label="戻りリンク">
+          <a href="../index.html">ポートフォリオTOP</a>
+          <a href="optical-inventory.html">業務システムTOP</a>
         </div>
       </aside>
 
       <main class="workspace">
         <header class="topbar detail-topbar">
           <div>
-            <p class="eyebrow">Member lookup system</p>
+            <p class="eyebrow">会員照合</p>
             <h1>QR会員証と複数条件で、顧客カルテをすばやく照合する</h1>
           </div>
           <div class="top-actions">
@@ -45,7 +45,7 @@
           </div>
         </header>
 
-        <section class="system-flow" aria-label="Lookup flow">
+        <section class="system-flow" aria-label="会員照合の流れ">
           <article>
             <span>1</span>
             <strong>QR読取</strong>
@@ -72,10 +72,10 @@
           <article class="panel lookup-panel">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Search inputs</p>
+                <p class="eyebrow">検索条件</p>
                 <h2>検索方法</h2>
               </div>
-              <span class="live-badge" id="lookupState">Ready</span>
+              <span class="live-badge" id="lookupState">検索待ち</span>
             </div>
             <div class="search-mode-grid">
               <button type="button" class="active" data-mode="qr">QR</button>
@@ -103,13 +103,13 @@
           <article class="panel qr-reader-panel">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">QR reader</p>
+                <p class="eyebrow">QR読取</p>
                 <h2>紙会員証QR</h2>
               </div>
             </div>
             <div class="qr-scan-frame">
-              <div class="qr-box large" aria-label="QR code preview"></div>
-              <span id="scanLine">Scan standby</span>
+              <div class="qr-box large" aria-label="QRコードの表示例"></div>
+              <span id="scanLine">読取待ち</span>
             </div>
             <p class="helper-text">QRが読めない場合は、会員番号を手入力。紙カード破損やスマホ忘れにも対応する想定です。</p>
           </article>
@@ -118,22 +118,22 @@
         <section class="panel results-panel" id="results">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Candidate results</p>
+              <p class="eyebrow">検索結果</p>
               <h2>候補一覧</h2>
             </div>
-            <span class="live-badge" id="resultCount">3 candidates</span>
+            <span class="live-badge" id="resultCount">候補3件</span>
           </div>
           <div class="candidate-list">
             <button type="button" class="candidate-card active" data-member="A-1024">
-              <strong>Member A-1024</strong>
+              <strong>会員 A-1024</strong>
               <span>電話下4桁 5678 / 最終来店 2026-04-18 / 遠近両用</span>
             </button>
             <button type="button" class="candidate-card" data-member="F-2048">
-              <strong>Family F-2048</strong>
+              <strong>家族会員 F-2048</strong>
               <span>電話下4桁 5678 / 家族紐づけ / キッズフレーム</span>
             </button>
             <button type="button" class="candidate-card" data-member="R-7781">
-              <strong>Receipt R-7781</strong>
+              <strong>保証書 R-7781</strong>
               <span>保証書番号一致 / 修理履歴あり / 受渡済み</span>
             </button>
           </div>
@@ -142,7 +142,7 @@
         <section class="panel member-record-panel" id="record">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Customer record</p>
+              <p class="eyebrow">顧客情報</p>
               <h2>会員カルテ</h2>
             </div>
             <span class="live-badge" id="selectedMember">A-1024</span>
@@ -205,10 +205,10 @@
         <section class="panel purchase-history-panel" id="history">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Purchase history</p>
+              <p class="eyebrow">購入履歴</p>
               <h2>購入履歴</h2>
             </div>
-            <span class="live-badge">4 records</span>
+            <span class="live-badge">4件</span>
           </div>
           <div class="history-list">
             <article>
@@ -245,7 +245,7 @@
         <section class="panel requirements-panel" id="requirements">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Requirement notes</p>
+              <p class="eyebrow">設計メモ</p>
               <h2>会員照合システムの要件メモ</h2>
             </div>
           </div>

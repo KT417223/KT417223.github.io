@@ -13,9 +13,9 @@ function setState(text) {
 }
 
 function runSearch(source) {
-  setState(`${source} search`);
-  scanLine.textContent = `${source} matched`;
-  window.setTimeout(() => setState("Ready"), 1200);
+  setState(`${source}で検索中`);
+  scanLine.textContent = `${source}で照合済み`;
+  window.setTimeout(() => setState("検索待ち"), 1200);
 }
 
 scanQr.addEventListener("click", () => {
@@ -24,20 +24,20 @@ scanQr.addEventListener("click", () => {
 
 lookupForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  runSearch("Manual");
+  runSearch("手入力");
 });
 
 clearSearch.addEventListener("click", () => {
   lookupForm.reset();
-  setState("Cleared");
-  scanLine.textContent = "Scan standby";
+  setState("クリア済み");
+  scanLine.textContent = "読取待ち";
 });
 
 modeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     modeButtons.forEach((item) => item.classList.remove("active"));
     button.classList.add("active");
-    setState(`${button.textContent.trim()} mode`);
+    setState(`${button.textContent.trim()}で検索`);
   });
 });
 
