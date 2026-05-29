@@ -16,10 +16,10 @@ function reserveBox() {
   reserved += 1;
   reservedBoxes.textContent = `${reserved} 箱`;
   contactReservedRow.textContent = "3箱";
-  reserveState.textContent = "Reserved";
-  contactState.textContent = "Stock updated";
-  contactAlertCount.textContent = "7 SKU";
-  contactOrderState.textContent = "Reorder suggested";
+  reserveState.textContent = "取り置き済み";
+  contactState.textContent = "在庫更新済み";
+  contactAlertCount.textContent = "7品目";
+  contactOrderState.textContent = "補充候補";
   contactOrderStatus.textContent = "発注候補";
   contactOrderStatus.classList.remove("danger");
   contactOrderStatus.classList.add("warn");
@@ -29,10 +29,10 @@ function resetState() {
   reserved = 9;
   reservedBoxes.textContent = "9 箱";
   contactReservedRow.textContent = "2箱";
-  reserveState.textContent = "Ready";
-  contactState.textContent = "Monitoring";
-  contactAlertCount.textContent = "6 SKU";
-  contactOrderState.textContent = "Draft ready";
+  reserveState.textContent = "受付中";
+  contactState.textContent = "確認中";
+  contactAlertCount.textContent = "6品目";
+  contactOrderState.textContent = "発注候補";
   contactOrderStatus.textContent = "未発注";
   contactOrderStatus.classList.remove("warn");
   contactOrderStatus.classList.add("danger");
@@ -45,7 +45,7 @@ modeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     modeButtons.forEach((item) => item.classList.remove("active"));
     button.classList.add("active");
-    contactState.textContent = `${button.textContent.trim()} view`;
+    contactState.textContent = `${button.textContent.trim()}を表示中`;
   });
 });
 

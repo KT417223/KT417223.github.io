@@ -9,9 +9,9 @@ const modeButtons = [...document.querySelectorAll(".search-mode-grid button")];
 const navItems = [...document.querySelectorAll(".side-nav a")];
 
 function markOrdered() {
-  lensState.textContent = "Order created";
-  orderState.textContent = "PO submitted";
-  alertCount.textContent = "6 SKU";
+  lensState.textContent = "発注作成済み";
+  orderState.textContent = "発注済み";
+  alertCount.textContent = "6品目";
   orderedCount.textContent = "17 枚";
   secondOrderStatus.textContent = "発注済";
   secondOrderStatus.classList.remove("danger");
@@ -19,9 +19,9 @@ function markOrdered() {
 }
 
 function resetState() {
-  lensState.textContent = "Monitoring";
-  orderState.textContent = "Draft ready";
-  alertCount.textContent = "9 SKU";
+  lensState.textContent = "確認中";
+  orderState.textContent = "発注候補";
+  alertCount.textContent = "9品目";
   orderedCount.textContent = "14 枚";
   secondOrderStatus.textContent = "未発注";
   secondOrderStatus.classList.remove("warn");
@@ -35,7 +35,7 @@ modeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     modeButtons.forEach((item) => item.classList.remove("active"));
     button.classList.add("active");
-    lensState.textContent = `${button.textContent.trim()} view`;
+    lensState.textContent = `${button.textContent.trim()}を表示中`;
   });
 });
 

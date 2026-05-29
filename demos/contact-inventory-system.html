@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Contact lens inventory system demo with category stock, expiration, reservation, and reorder alerts."
+      content="眼鏡店向けのコンタクト在庫画面。カテゴリ在庫、期限、取り置き、補充発注を確認する。"
     />
-    <title>Contact Lens Inventory System Demo</title>
+    <title>コンタクト在庫</title>
     <link rel="stylesheet" href="../src/optical-demo.css" />
   </head>
   <body>
@@ -16,28 +16,27 @@
         <a class="brand" href="optical-inventory.html">
           <span class="brand-mark">CL</span>
           <span>
-            <strong>Contact Inventory</strong>
-            <small>System demo</small>
+            <strong>コンタクト在庫</strong>
+            <small>業務システム</small>
           </span>
         </a>
-        <nav class="side-nav" aria-label="Contact inventory navigation">
-          <a class="active" href="#summary">Summary</a>
-          <a href="#stock">Stock</a>
-          <a href="#reserve">Reserve</a>
-          <a href="#orders">Orders</a>
-          <a href="#requirements">Requirements</a>
+        <nav class="side-nav" aria-label="コンタクト在庫ナビゲーション">
+          <a class="active" href="#summary">概要</a>
+          <a href="#stock">在庫一覧</a>
+          <a href="#reserve">取り置き</a>
+          <a href="#orders">発注状況</a>
+          <a href="#requirements">設計メモ</a>
         </nav>
-        <div class="home-links" aria-label="Home links">
-          <a href="../index.html">Portfolio Home</a>
-          <a href="optical-inventory.html">System Top</a>
+        <div class="home-links" aria-label="戻りリンク">
+          <a href="../index.html">ポートフォリオTOP</a>
+          <a href="optical-inventory.html">業務システムTOP</a>
         </div>
       </aside>
 
       <main class="workspace">
         <header class="topbar detail-topbar">
           <div>
-            <p class="eyebrow">Contact lens inventory system</p>
-            <h1>コンタクト在庫をカテゴリ化し、箱数・期限・取り置き・補充を管理する</h1>
+            <h1>コンタクト在庫</h1>
           </div>
           <div class="top-actions">
             <button type="button" class="ghost-button" id="resetContact">リセット</button>
@@ -45,34 +44,11 @@
           </div>
         </header>
 
-        <section class="system-flow" aria-label="Contact inventory flow">
-          <article>
-            <span>1</span>
-            <strong>カテゴリ管理</strong>
-            <p>1day、2week、乱視用、遠近用、カラーなどのカテゴリで在庫を分類。</p>
-          </article>
-          <article>
-            <span>2</span>
-            <strong>度数・規格管理</strong>
-            <p>PWR、BC、DIA、CYL、AXISを商品ごとに管理し、会員カルテと照合。</p>
-          </article>
-          <article>
-            <span>3</span>
-            <strong>期限・箱数管理</strong>
-            <p>使用期限、箱数、取り置き数、販売可能数を確認。</p>
-          </article>
-          <article>
-            <span>4</span>
-            <strong>補充・発注</strong>
-            <p>不足、期限近、定期購入候補から補充リストを作成。</p>
-          </article>
-        </section>
-
         <section class="kpi-grid" id="summary">
           <article>
             <span>不足カテゴリ</span>
-            <strong id="contactAlertCount">6 SKU</strong>
-            <small>至急 2件</small>
+            <strong id="contactAlertCount">6品目</strong>
+            <small>不足 2件</small>
           </article>
           <article>
             <span>期限注意</span>
@@ -95,10 +71,9 @@
           <article class="panel lens-filter-panel">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Category</p>
                 <h2>コンタクトカテゴリ</h2>
               </div>
-              <span class="live-badge" id="contactState">Monitoring</span>
+              <span class="live-badge" id="contactState">確認中</span>
             </div>
             <div class="search-mode-grid">
               <button type="button" class="active">1day</button>
@@ -116,13 +91,12 @@
           <article class="panel shortage-panel">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Contact alerts</p>
                 <h2>不足・期限アラート</h2>
               </div>
             </div>
             <div class="alert-list">
               <article>
-                <span class="pill danger">至急</span>
+                <span class="pill danger">不足</span>
                 <strong>1day Moist / PWR -3.50</strong>
                 <p>在庫 3箱 / 最小 8箱 / 取り置き 2箱 / 推奨発注 12箱</p>
               </article>
@@ -143,10 +117,9 @@
         <section class="panel lens-matrix-panel" id="stock">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Contact stock</p>
               <h2>コンタクト在庫一覧</h2>
             </div>
-            <span class="live-badge">Category stock</span>
+            <span class="live-badge">カテゴリ別</span>
           </div>
           <div class="table-wrap">
             <table>
@@ -211,22 +184,21 @@
         <section class="panel order-status-panel" id="reserve">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Reservation</p>
               <h2>取り置き・会員紐づけ</h2>
             </div>
-            <span class="live-badge" id="reserveState">Ready</span>
+            <span class="live-badge" id="reserveState">受付中</span>
           </div>
           <div class="history-list">
             <article>
               <div>
-                <strong>Member A-1024 / 1day Moist -3.50</strong>
+                <strong>会員 A-1024 / 1day Moist -3.50</strong>
                 <p>2箱取り置き / 受取予定 06/02 / 電話連絡済み</p>
               </div>
               <span class="pill warn">受取待ち</span>
             </article>
             <article>
               <div>
-                <strong>Member F-2048 / Multifocal 1day</strong>
+                <strong>家族会員 F-2048 / Multifocal 1day</strong>
                 <p>3箱取り置き / 定期購入候補 / 次回提案あり</p>
               </div>
               <span class="pill ok">準備済</span>
@@ -237,10 +209,9 @@
         <section class="panel order-status-panel" id="orders">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Purchase status</p>
               <h2>補充・発注ステータス</h2>
             </div>
-            <span class="live-badge" id="contactOrderState">Draft ready</span>
+            <span class="live-badge" id="contactOrderState">発注候補</span>
           </div>
           <div class="history-list">
             <article>
@@ -263,7 +234,6 @@
         <section class="panel requirements-panel" id="requirements">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Requirement notes</p>
               <h2>コンタクト在庫管理の要件メモ</h2>
             </div>
           </div>

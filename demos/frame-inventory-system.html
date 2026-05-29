@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Frame inventory system demo for QR tags, store stock, cross-store stock, and sales allocation."
+      content="眼鏡店向けのフレーム在庫画面。QRタグ、自店数量、他店舗在庫、販売引当を確認する。"
     />
-    <title>Frame Inventory System Demo</title>
+    <title>フレーム在庫</title>
     <link rel="stylesheet" href="../src/optical-demo.css" />
   </head>
   <body>
@@ -16,28 +16,27 @@
         <a class="brand" href="optical-inventory.html">
           <span class="brand-mark">FI</span>
           <span>
-            <strong>Frame Inventory</strong>
-            <small>System demo</small>
+            <strong>フレーム在庫</strong>
+            <small>業務システム</small>
           </span>
         </a>
-        <nav class="side-nav" aria-label="Frame inventory navigation">
-          <a class="active" href="#scan">QR Scan</a>
-          <a href="#stock">Stock</a>
-          <a href="#stores">Stores</a>
-          <a href="#allocation">Allocation</a>
-          <a href="#requirements">Requirements</a>
+        <nav class="side-nav" aria-label="フレーム在庫ナビゲーション">
+          <a class="active" href="#scan">QR読取</a>
+          <a href="#stock">自店数量</a>
+          <a href="#stores">他店舗在庫</a>
+          <a href="#allocation">販売引当</a>
+          <a href="#requirements">設計メモ</a>
         </nav>
-        <div class="home-links" aria-label="Home links">
-          <a href="../index.html">Portfolio Home</a>
-          <a href="optical-inventory.html">System Top</a>
+        <div class="home-links" aria-label="戻りリンク">
+          <a href="../index.html">ポートフォリオTOP</a>
+          <a href="optical-inventory.html">業務システムTOP</a>
         </div>
       </aside>
 
       <main class="workspace">
         <header class="topbar detail-topbar">
           <div>
-            <p class="eyebrow">Frame inventory system</p>
-            <h1>QRタグでフレーム在庫を照合し、自店・他店・販売引当を管理する</h1>
+            <h1>フレーム在庫</h1>
           </div>
           <div class="top-actions">
             <button type="button" class="ghost-button" id="resetFrame">リセット</button>
@@ -45,48 +44,24 @@
           </div>
         </header>
 
-        <section class="system-flow" aria-label="Frame inventory flow">
-          <article>
-            <span>1</span>
-            <strong>QRタグ読取</strong>
-            <p>フレームに付けたQRタグを読み取り、品番・カラー・サイズ・JAN相当の管理番号を取得。</p>
-          </article>
-          <article>
-            <span>2</span>
-            <strong>自店在庫確認</strong>
-            <p>棚、展示、バックヤード、販売引当を分けて数量を確認。</p>
-          </article>
-          <article>
-            <span>3</span>
-            <strong>他店舗在庫確認</strong>
-            <p>近隣店舗、倉庫、取り寄せ可能数を表示し、販売員が提案しやすくする。</p>
-          </article>
-          <article>
-            <span>4</span>
-            <strong>販売引当</strong>
-            <p>販売時に数量を引当し、受注・加工・受け渡しまで在庫を確保する。</p>
-          </article>
-        </section>
-
         <section class="frame-layout">
           <article class="panel frame-scan-panel" id="scan">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">QR tag</p>
                 <h2>QRタグ読取</h2>
               </div>
-              <span class="live-badge" id="frameScanState">Ready</span>
+              <span class="live-badge" id="frameScanState">待機中</span>
             </div>
             <div class="frame-tag-card">
               <div class="qr-box large" aria-label="Frame QR tag preview"></div>
               <div>
-                <span>Frame ID</span>
+                <span>フレームID</span>
                 <strong id="frameId">FR-CL4820-C1</strong>
                 <p>Classic 48□20 / Color C1 / βチタン / 標準鼻パッド</p>
               </div>
             </div>
             <button type="button" class="device-button compact" id="scanFrameButton">
-              <span>SCAN</span>
+              <span>読取</span>
               <strong>QRタグ読取</strong>
             </button>
           </article>
@@ -94,10 +69,9 @@
           <article class="panel stock-summary-panel" id="stock">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">This store</p>
                 <h2>自店数量</h2>
               </div>
-              <span class="live-badge" id="stockState">Available</span>
+              <span class="live-badge" id="stockState">販売可能</span>
             </div>
             <div class="stock-metrics">
               <div><span>展示</span><strong id="displayQty">3</strong></div>
@@ -110,7 +84,6 @@
           <article class="panel allocation-panel" id="allocation">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Sales allocation</p>
                 <h2>販売引当</h2>
               </div>
             </div>
@@ -127,10 +100,9 @@
         <section class="panel other-store-panel" id="stores">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Other stores</p>
               <h2>他店舗在庫・数量確認</h2>
             </div>
-            <span class="live-badge">Total 28</span>
+            <span class="live-badge">合計28本</span>
           </div>
           <div class="table-wrap">
             <table>
@@ -185,7 +157,6 @@
         <section class="panel requirements-panel" id="requirements">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Requirement notes</p>
               <h2>フレーム在庫管理の要件メモ</h2>
             </div>
           </div>

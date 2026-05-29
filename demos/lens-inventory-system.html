@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Lens inventory system demo with shortage alerts and purchase order statuses."
+      content="眼鏡店向けのレンズ在庫画面。度数別在庫、不足アラート、発注ステータスを確認する。"
     />
-    <title>Lens Inventory System Demo</title>
+    <title>レンズ在庫</title>
     <link rel="stylesheet" href="../src/optical-demo.css" />
   </head>
   <body>
@@ -16,27 +16,26 @@
         <a class="brand" href="optical-inventory.html">
           <span class="brand-mark">LI</span>
           <span>
-            <strong>Lens Inventory</strong>
-            <small>System demo</small>
+            <strong>レンズ在庫</strong>
+            <small>業務システム</small>
           </span>
         </a>
-        <nav class="side-nav" aria-label="Lens inventory navigation">
-          <a class="active" href="#alerts">Alerts</a>
-          <a href="#matrix">Stock</a>
-          <a href="#orders">Orders</a>
-          <a href="#requirements">Requirements</a>
+        <nav class="side-nav" aria-label="レンズ在庫ナビゲーション">
+          <a class="active" href="#alerts">不足確認</a>
+          <a href="#matrix">在庫一覧</a>
+          <a href="#orders">発注状況</a>
+          <a href="#requirements">設計メモ</a>
         </nav>
-        <div class="home-links" aria-label="Home links">
-          <a href="../index.html">Portfolio Home</a>
-          <a href="optical-inventory.html">System Top</a>
+        <div class="home-links" aria-label="戻りリンク">
+          <a href="../index.html">ポートフォリオTOP</a>
+          <a href="optical-inventory.html">業務システムTOP</a>
         </div>
       </aside>
 
       <main class="workspace">
         <header class="topbar detail-topbar">
           <div>
-            <p class="eyebrow">Lens inventory system</p>
-            <h1>レンズ在庫を度数別に確認し、不足アラートと発注ステータスを管理する</h1>
+            <h1>レンズ在庫</h1>
           </div>
           <div class="top-actions">
             <button type="button" class="ghost-button" id="resetLens">リセット</button>
@@ -44,34 +43,11 @@
           </div>
         </header>
 
-        <section class="system-flow" aria-label="Lens inventory flow">
-          <article>
-            <span>1</span>
-            <strong>度数別在庫</strong>
-            <p>SPH/CYL/AXIS/ADDや屈折率、コーティングごとに在庫数を確認。</p>
-          </article>
-          <article>
-            <span>2</span>
-            <strong>不足アラート</strong>
-            <p>最小在庫数を下回ったレンズを検知し、至急/注意/適正で表示。</p>
-          </article>
-          <article>
-            <span>3</span>
-            <strong>発注候補</strong>
-            <p>不足数、引当数、販売傾向を見て補充数量を自動提案。</p>
-          </article>
-          <article>
-            <span>4</span>
-            <strong>発注ステータス</strong>
-            <p>未発注、発注済、メーカー確認中、入荷待ち、入荷済を追跡。</p>
-          </article>
-        </section>
-
         <section class="kpi-grid" id="alerts">
           <article>
             <span>不足アラート</span>
-            <strong id="alertCount">9 SKU</strong>
-            <small>至急 3件</small>
+            <strong id="alertCount">9品目</strong>
+            <small>不足 3件</small>
           </article>
           <article>
             <span>発注済</span>
@@ -94,10 +70,9 @@
           <article class="panel lens-filter-panel">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Filter</p>
                 <h2>在庫条件</h2>
               </div>
-              <span class="live-badge" id="lensState">Monitoring</span>
+              <span class="live-badge" id="lensState">確認中</span>
             </div>
             <div class="search-mode-grid">
               <button type="button" class="active">1.60 AS</button>
@@ -115,13 +90,12 @@
           <article class="panel shortage-panel">
             <div class="panel-heading">
               <div>
-                <p class="eyebrow">Shortage alerts</p>
                 <h2>不足アラート</h2>
               </div>
             </div>
             <div class="alert-list">
               <article>
-                <span class="pill danger">至急</span>
+                <span class="pill danger">不足</span>
                 <strong>1.67 AS Blue Cut / SPH -2.25</strong>
                 <p>在庫 1 / 最小 4 / 引当 3 / 推奨発注 6枚</p>
               </article>
@@ -131,7 +105,7 @@
                 <p>在庫 3 / 最小 5 / 引当 2 / 推奨発注 4枚</p>
               </article>
               <article>
-                <span class="pill danger">至急</span>
+                <span class="pill danger">不足</span>
                 <strong>Progressive 1.60 / ADD +1.50</strong>
                 <p>在庫 0 / 最小 2 / 引当 1 / 推奨発注 3枚</p>
               </article>
@@ -142,10 +116,9 @@
         <section class="panel lens-matrix-panel" id="matrix">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Stock matrix</p>
               <h2>度数別レンズ在庫</h2>
             </div>
-            <span class="live-badge">SPH/CYL 0.25 step</span>
+            <span class="live-badge">0.25刻み</span>
           </div>
           <div class="table-wrap">
             <table>
@@ -210,10 +183,9 @@
         <section class="panel order-status-panel" id="orders">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Purchase status</p>
               <h2>発注ステータス</h2>
             </div>
-            <span class="live-badge" id="orderState">Draft ready</span>
+            <span class="live-badge" id="orderState">発注候補</span>
           </div>
           <div class="history-list">
             <article>
@@ -243,7 +215,6 @@
         <section class="panel requirements-panel" id="requirements">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Requirement notes</p>
               <h2>レンズ在庫管理の要件メモ</h2>
             </div>
           </div>
@@ -253,7 +224,7 @@
               <ul>
                 <li>最小在庫数を下回ったら警告</li>
                 <li>引当数を考慮して販売可能数を算出</li>
-                <li>至急/注意/適正で優先度表示</li>
+                <li>不足/注意/適正で優先度表示</li>
               </ul>
             </article>
             <article>

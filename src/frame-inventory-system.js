@@ -22,14 +22,14 @@ function renderStock(message = "在庫状態を更新しました。") {
   tableAllocated.textContent = allocated;
   tableAvailable.textContent = available;
   allocationMessage.textContent = message;
-  stockState.textContent = available <= 3 ? "Low stock" : "Available";
+  stockState.textContent = available <= 3 ? "残りわずか" : "販売可能";
 }
 
 function scanTag() {
-  frameScanState.textContent = "QR matched";
+  frameScanState.textContent = "読取済み";
   allocationMessage.textContent = "QRタグ FR-CL4820-C1 を読み取りました。自店・他店在庫を照合できます。";
   window.setTimeout(() => {
-    frameScanState.textContent = "Ready";
+    frameScanState.textContent = "待機中";
   }, 1200);
 }
 
@@ -55,7 +55,7 @@ function release() {
 
 function reset() {
   allocated = 2;
-  frameScanState.textContent = "Ready";
+  frameScanState.textContent = "待機中";
   renderStock("初期状態に戻しました。");
 }
 
