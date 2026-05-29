@@ -201,6 +201,14 @@ textarea:focus-visible {
   line-height: 1.02;
 }
 
+.topbar-lead {
+  max-width: 43rem;
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.75;
+}
+
 .eyebrow {
   margin: 0 0 0.55rem;
   color: var(--green-dark);
@@ -257,6 +265,7 @@ textarea:focus-visible {
 }
 
 .module-map,
+.store-flow,
 .roadmap-grid,
 .kpi-grid,
 .work-summary-grid,
@@ -283,6 +292,16 @@ textarea:focus-visible {
 .module-map {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-bottom: 1rem;
+}
+
+.store-flow {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin-bottom: 1rem;
+  padding: 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  box-shadow: 0 8px 26px rgba(21, 32, 28, 0.05);
 }
 
 .system-flow {
@@ -406,6 +425,7 @@ a.roadmap-item.is-ready::after {
 }
 
 .module-map article,
+.store-flow article,
 .system-flow article,
 .kpi-grid article,
 .panel {
@@ -421,6 +441,49 @@ a.roadmap-item.is-ready::after {
   padding: 1rem;
 }
 
+.store-flow article {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.45rem;
+  min-height: 9.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.65rem;
+  padding: 0.9rem;
+  background: var(--panel);
+}
+
+.store-flow article:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: -0.75rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--green);
+  color: white;
+  content: "→";
+  font-size: 0.78rem;
+  font-weight: 950;
+  transform: translateY(-50%);
+}
+
+.store-flow span {
+  color: var(--green-dark);
+  font-size: 0.78rem;
+  font-weight: 950;
+}
+
+.store-flow small {
+  color: var(--muted);
+  font-weight: 750;
+  line-height: 1.5;
+}
+
 .system-flow article {
   display: grid;
   gap: 0.55rem;
@@ -429,6 +492,7 @@ a.roadmap-item.is-ready::after {
 }
 
 .module-map strong,
+.store-flow strong,
 .system-flow strong {
   font-size: 1.15rem;
 }
@@ -1712,6 +1776,7 @@ th {
   }
 
   .module-map,
+  .store-flow,
   .roadmap-grid,
   .system-flow,
   .kpi-grid,
@@ -1739,6 +1804,17 @@ th {
   .member-card,
   .frame-tag-card {
     grid-template-columns: 1fr;
+  }
+
+  .store-flow article {
+    min-height: auto;
+  }
+
+  .store-flow article:not(:last-child)::after {
+    top: auto;
+    right: 1rem;
+    bottom: -0.8rem;
+    transform: rotate(90deg);
   }
 
   .section-heading {

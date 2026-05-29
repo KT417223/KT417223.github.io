@@ -7,7 +7,7 @@
       name="description"
       content="Optical store operations system demo covering queue tickets, membership lookup, inventory, ordering, and sales."
     />
-    <title>Optical Flow System Demo</title>
+    <title>OptiFlow Retail Suite</title>
     <link rel="stylesheet" href="../src/optical-demo.css" />
   </head>
   <body>
@@ -16,8 +16,8 @@
         <a class="brand" href="../index.html">
           <span class="brand-mark">OF</span>
           <span>
-            <strong>Optical Flow</strong>
-            <small>Store ops demo</small>
+            <strong>OptiFlow</strong>
+            <small>Retail Suite</small>
           </span>
         </a>
         <nav class="side-nav" aria-label="Demo navigation">
@@ -38,7 +38,8 @@
         <header class="topbar">
           <div>
             <p class="eyebrow">Optical retail operations</p>
-            <h1>待合から販売、在庫、発注までつなぐ店舗業務システム</h1>
+            <h1>OptiFlow Retail Suite</h1>
+            <p class="topbar-lead">受付、会員照合、販売、在庫、加工、棚卸しまでをひとつながりで管理する眼鏡店向け業務システム。</p>
           </div>
           <div class="top-actions">
             <button type="button" class="icon-button" aria-label="Search">⌕</button>
@@ -46,26 +47,36 @@
           </div>
         </header>
 
-        <section class="module-map" aria-label="System modules">
+        <section class="store-flow" aria-label="Store operation flow">
           <article>
             <span>01</span>
-            <strong>待合発券</strong>
-            <small>番号札発券・販売員呼び出し</small>
+            <strong>受付・発券</strong>
+            <small>番号札発券、呼び出し、来店目的の確認</small>
           </article>
           <article>
             <span>02</span>
             <strong>会員照合</strong>
-            <small>QR会員証・視力情報</small>
+            <small>QR会員証、購入履歴、処方情報を確認</small>
           </article>
           <article>
             <span>03</span>
-            <strong>在庫管理</strong>
-            <small>フレーム・レンズ・コンタクト</small>
+            <strong>処方入力</strong>
+            <small>レンズ度数、PD、用途メモを記録</small>
           </article>
           <article>
             <span>04</span>
-            <strong>発注</strong>
-            <small>帳票作成・メーカー送付</small>
+            <strong>見積・販売</strong>
+            <small>商品選択、値引き、販売確定</small>
+          </article>
+          <article>
+            <span>05</span>
+            <strong>在庫・発注</strong>
+            <small>在庫引当、不足確認、発注候補作成</small>
+          </article>
+          <article>
+            <span>06</span>
+            <strong>加工・受渡</strong>
+            <small>加工、検品、受け渡し、棚卸し</small>
           </article>
         </section>
 
@@ -134,12 +145,12 @@
         <section class="kpi-grid" id="dashboard">
           <article>
             <span>呼出待ち</span>
-            <strong id="queueCount">7 組</strong>
-            <small>平均待ち 12分</small>
+            <strong id="queueCount">7組</strong>
+            <small>待ち時間 12分</small>
           </article>
           <article>
             <span>欠品アラート</span>
-            <strong>18 SKU</strong>
+            <strong>18件</strong>
             <small>至急 5件</small>
           </article>
           <article>
@@ -149,7 +160,7 @@
           </article>
           <article>
             <span>本日在庫金額</span>
-            <strong>¥8.42M</strong>
+            <strong>8,420,000円</strong>
             <small>前月比 +4.8%</small>
           </article>
         </section>
