@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Prescription input system mock for an optical store."
+    />
+    <title>Prescription Input System Mock</title>
+    <link rel="stylesheet" href="../src/optical-demo.css" />
+  </head>
+  <body>
+    <div class="app-frame">
+      <aside class="side-panel">
+        <a class="brand" href="optical-inventory.html">
+          <span class="brand-mark">RX</span>
+          <span>
+            <strong>Prescription Input</strong>
+            <small>Requirement mock</small>
+          </span>
+        </a>
+        <nav class="side-nav" aria-label="Prescription navigation">
+          <a class="active" href="#exam">Exam</a>
+          <a href="#input">Input</a>
+          <a href="#history">History</a>
+          <a href="#member-note">Member note</a>
+          <a href="#requirements">Requirements</a>
+        </nav>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar detail-topbar">
+          <div>
+            <p class="eyebrow">Prescription input system</p>
+            <h1>測定結果をレンズ度数として記録し、販売・加工へつなげる処方入力モック</h1>
+          </div>
+          <div class="top-actions">
+            <button type="button" class="ghost-button" id="copyPrevious">前回値を反映</button>
+            <button type="button" class="primary-button" id="savePrescription">処方を保存</button>
+          </div>
+        </header>
+
+        <section class="system-flow" aria-label="Prescription flow">
+          <article>
+            <span>1</span>
+            <strong>会員呼び出し</strong>
+            <p>QR会員証や会員検索から対象顧客を開き、過去のレンズ度数・購入履歴を確認。</p>
+          </article>
+          <article>
+            <span>2</span>
+            <strong>測定値入力</strong>
+            <p>SPH/CYL/ADDは0.25刻み、AXISは角度、PDはmmで入力し、左右差を見ながら調整。</p>
+          </article>
+          <article>
+            <span>3</span>
+            <strong>用途メモ</strong>
+            <p>遠用、近用、常用、PC作業、運転など、販売提案に必要な利用シーンを記録。</p>
+          </article>
+          <article>
+            <span>4</span>
+            <strong>販売へ連携</strong>
+            <p>保存した処方を見積・販売登録、レンズ在庫確認、加工指示へ引き渡す。</p>
+          </article>
+        </section>
+
+        <section class="prescription-layout" id="exam">
+          <article class="panel customer-summary-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Customer</p>
+                <h2>対象会員</h2>
+              </div>
+              <a class="live-badge" href="member-lookup-system.html">Member Detail</a>
+            </div>
+            <div class="customer-summary-card">
+              <strong>A-1024 サンプル 太郎</strong>
+              <dl class="member-spec">
+                <div><dt>前回購入</dt><dd>2026-04-18 遠近両用</dd></div>
+                <div><dt>前回PD</dt><dd>63.5 mm</dd></div>
+                <div><dt>注意事項</dt><dd>夜間運転多め、軽量フレーム希望</dd></div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="panel exam-status-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Exam status</p>
+                <h2>測定ステータス</h2>
+              </div>
+              <span class="live-badge" id="rxState">Draft</span>
+            </div>
+            <div class="exam-step-list">
+              <button type="button" class="active" data-step="予備検査">予備検査</button>
+              <button type="button" data-step="自覚検査">自覚検査</button>
+              <button type="button" data-step="装用テスト">装用テスト</button>
+              <button type="button" data-step="確定">確定</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel prescription-input-panel" id="input">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Lens prescription</p>
+              <h2>レンズ度数入力</h2>
+            </div>
+            <span class="live-badge">0.25 step</span>
+          </div>
+          <div class="prescription-editor">
+            <div class="prescription-table-wrap">
+              <table class="prescription-table rx-edit-table">
+                <thead>
+                  <tr>
+                    <th>眼</th>
+                    <th>SPH</th>
+                    <th>CYL</th>
+                    <th>AXIS</th>
+                    <th>ADD</th>
+                    <th>PD</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>R</td>
+                    <td><input id="rSph" type="number" step="0.25" value="-2.25" /></td>
+                    <td><input id="rCyl" type="number" step="0.25" value="-0.75" /></td>
+                    <td><input id="rAxis" type="number" min="0" max="180" step="1" value="180" /></td>
+                    <td><input id="rAdd" type="number" step="0.25" value="1.50" /></td>
+                    <td><input id="rPd" type="number" min="20" max="40" step="0.5" value="31.5" /></td>
+                  </tr>
+                  <tr>
+                    <td>L</td>
+                    <td><input id="lSph" type="number" step="0.25" value="-2.00" /></td>
+                    <td><input id="lCyl" type="number" step="0.25" value="-0.50" /></td>
+                    <td><input id="lAxis" type="number" min="0" max="180" step="1" value="170" /></td>
+                    <td><input id="lAdd" type="number" step="0.25" value="1.50" /></td>
+                    <td><input id="lPd" type="number" min="20" max="40" step="0.5" value="32.0" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="rx-side-note">
+              <label>
+                <span>用途</span>
+                <select id="rxUseCase">
+                  <option>遠近両用</option>
+                  <option>遠用</option>
+                  <option>近用</option>
+                  <option>PC・中近</option>
+                  <option>運転用</option>
+                </select>
+              </label>
+              <label>
+                <span>測定メモ</span>
+                <textarea id="rxMemo">夜間運転が多いため、見え方の安定感を優先。前回より右眼SPHを0.25調整。</textarea>
+              </label>
+              <div class="rx-total-card">
+                <span>合計PD</span>
+                <strong id="totalPd">63.5 mm</strong>
+              </div>
+            </div>
+          </div>
+          <p class="helper-text">SPH/CYL/ADDは0.25刻み、AXISは0から180度、PDは片眼PDと合計PDを確認できる想定です。</p>
+        </section>
+
+        <section class="panel purchase-history-panel" id="history">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Prescription history</p>
+              <h2>処方履歴</h2>
+            </div>
+            <span class="live-badge" id="historyCount">3 records</span>
+          </div>
+          <div class="history-list" id="rxHistory">
+            <article>
+              <div>
+                <strong>2026-05-29 Draft</strong>
+                <p id="currentSummary">R -2.25 / -0.75 x 180 ADD +1.50、L -2.00 / -0.50 x 170 ADD +1.50、PD 63.5 mm</p>
+              </div>
+              <span class="status progress">編集中</span>
+            </article>
+            <article>
+              <div>
+                <strong>2026-04-18 遠近両用</strong>
+                <p>R -2.00 / -0.75 x 180 ADD +1.50、L -2.00 / -0.50 x 170 ADD +1.50、PD 63.5 mm</p>
+              </div>
+              <span class="status ready">販売済</span>
+            </article>
+            <article>
+              <div>
+                <strong>2025-09-03 遠用</strong>
+                <p>R -1.75 / -0.50 x 175、L -1.75 / -0.25 x 170、PD 63.0 mm</p>
+              </div>
+              <span class="status waiting">過去</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel member-record-panel" id="member-note">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Member note</p>
+              <h2>会員記録への反映</h2>
+            </div>
+            <span class="live-badge">Linked</span>
+          </div>
+          <div class="record-grid">
+            <article>
+              <h3>販売提案</h3>
+              <p class="helper-text">用途と度数から、対象レンズカテゴリと在庫確認へ進める。</p>
+            </article>
+            <article>
+              <h3>加工指示</h3>
+              <p class="helper-text">確定処方、PD、フレーム情報を加工・検品ステータスに渡す。</p>
+            </article>
+            <article>
+              <h3>備考集約</h3>
+              <p class="helper-text">フィッティング、保証、修理受付の補足情報も会員備考で管理。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel requirements-panel" id="requirements">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Requirements</p>
+              <h2>必要要件</h2>
+            </div>
+          </div>
+          <div class="requirements-grid">
+            <article>
+              <h3>入力制御</h3>
+              <ul>
+                <li>SPH/CYL/ADDは0.25刻み</li>
+                <li>AXISは0から180度</li>
+                <li>PDは片眼・合計を確認</li>
+              </ul>
+            </article>
+            <article>
+              <h3>履歴管理</h3>
+              <ul>
+                <li>前回値の呼び出し</li>
+                <li>用途別の処方記録</li>
+                <li>販売済み処方との紐づけ</li>
+              </ul>
+            </article>
+            <article>
+              <h3>業務連携</h3>
+              <ul>
+                <li>見積・販売登録へ連携</li>
+                <li>レンズ在庫確認へ連携</li>
+                <li>加工・検品指示へ連携</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../src/prescription-input-system.js"></script>
+  </body>
+</html>

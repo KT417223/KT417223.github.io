@@ -173,6 +173,7 @@ button {
 .system-flow,
 .ticket-lab,
 .lookup-layout,
+.prescription-layout,
 .frame-layout,
 .lens-layout,
 .record-grid,
@@ -359,6 +360,11 @@ button {
 
 .lookup-layout {
   grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  margin-bottom: 1rem;
+}
+
+.prescription-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.75fr);
   margin-bottom: 1rem;
 }
 
@@ -621,6 +627,107 @@ button {
   background: var(--panel);
   color: var(--ink);
   font: inherit;
+}
+
+.customer-summary-card,
+.exam-step-list,
+.prescription-editor,
+.rx-side-note {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.customer-summary-card {
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  padding: 1rem;
+  background: var(--panel-soft);
+}
+
+.customer-summary-card strong {
+  font-size: 1.15rem;
+}
+
+.exam-step-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.exam-step-list button {
+  min-height: 3rem;
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  background: var(--panel-soft);
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.exam-step-list button.active {
+  border-color: var(--green);
+  background: rgba(15, 128, 103, 0.14);
+  color: var(--green-dark);
+}
+
+.prescription-input-panel {
+  margin-bottom: 1rem;
+}
+
+.prescription-editor {
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.45fr);
+  align-items: start;
+}
+
+.rx-edit-table input,
+.rx-side-note select,
+.rx-side-note textarea {
+  width: 100%;
+  min-height: 2.55rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  padding: 0 0.65rem;
+  background: var(--panel);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 800;
+}
+
+.rx-edit-table input {
+  min-width: 5.25rem;
+}
+
+.rx-side-note label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.rx-side-note span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.rx-side-note textarea {
+  min-height: 7rem;
+  padding: 0.75rem;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.rx-total-card {
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  padding: 1rem;
+  background: var(--panel-soft);
+}
+
+.rx-total-card span,
+.rx-total-card strong {
+  display: block;
+}
+
+.rx-total-card strong {
+  margin-top: 0.25rem;
+  font-size: 1.65rem;
 }
 
 .qr-scan-frame {
@@ -1048,6 +1155,8 @@ th {
   .dashboard-grid,
   .ticket-lab,
   .lookup-layout,
+  .prescription-layout,
+  .prescription-editor,
   .frame-layout,
   .lens-layout,
   .record-grid,

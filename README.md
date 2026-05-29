@@ -32,6 +32,7 @@ python3 -m http.server 5173
 │   └── optical-inventory.html
 │   └── queue-ticket-system.html
 │   └── member-lookup-system.html
+│   └── prescription-input-system.html
 │   └── frame-inventory-system.html
 │   └── lens-inventory-system.html
 │   └── contact-inventory-system.html
@@ -42,6 +43,7 @@ python3 -m http.server 5173
 │   ├── optical-demo.js
 │   ├── queue-ticket-system.js
 │   ├── member-lookup-system.js
+│   ├── prescription-input-system.js
 │   ├── frame-inventory-system.js
 │   ├── lens-inventory-system.js
 │   ├── contact-inventory-system.js
