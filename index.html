@@ -7,17 +7,20 @@
       name="description"
       content="PMO, business improvement, infrastructure operations, and DX support portfolio."
     />
-    <title>PMO Portfolio</title>
+    <title>KT417223 Portfolio</title>
     <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="PMO Portfolio home">
-        <span class="brand-mark">PM</span>
-        <span>Portfolio</span>
+      <a class="brand" href="#top" aria-label="Portfolio home">
+        <span class="brand-mark">KT</span>
+        <span>
+          <strong>KT417223</strong>
+          <small>operations portfolio</small>
+        </span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#strengths">Strengths</a>
+        <a href="#status">Status</a>
         <a href="#works">Works</a>
         <a href="#demo">Demo</a>
         <a href="#skills">Skills</a>
@@ -26,56 +29,91 @@
     </header>
 
     <main id="top">
-      <section class="hero-section">
-        <div class="hero-media" aria-hidden="true">
-          <img src="assets/portfolio-hero.png" alt="" />
-        </div>
-        <div class="hero-content">
-          <p class="eyebrow">PMO / Business Improvement / Infrastructure</p>
-          <h1>現場課題を整理し、プロジェクトを前へ進める。</h1>
-          <p class="hero-lead">
-            インフラ運用、業務改善、PMO支援を軸に、要件整理・課題管理・業務フロー可視化・テスト推進まで、現場とプロジェクトの間をつなぎます。
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#works">実績を見る</a>
-            <a class="button button-secondary" href="#contact">Contact</a>
+      <section class="hero-section" aria-label="Portfolio overview">
+        <div class="terminal-shell">
+          <div class="terminal-titlebar" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <strong>portfolio.system</strong>
+          </div>
+          <div class="terminal-grid">
+            <aside class="command-panel" aria-label="Portfolio sections">
+              <div class="prompt-block">
+                <span class="prompt-label">user</span>
+                <strong>KT417223@portfolio:~$</strong>
+              </div>
+              <a href="#status"><span>01</span> cat status.log</a>
+              <a href="#works"><span>02</span> ls selected_works</a>
+              <a href="#demo"><span>03</span> open demo_suite</a>
+              <a href="#skills"><span>04</span> inspect skills</a>
+              <a href="#contact"><span>05</span> ping contact</a>
+            </aside>
+
+            <div class="hero-console">
+              <p class="console-line">$ boot portfolio --mode=readable-dashboard</p>
+              <p class="eyebrow">PMO / Business Improvement / Infrastructure</p>
+              <h1>現場課題を整理し、プロジェクトを前へ進める。</h1>
+              <p class="hero-lead">
+                インフラ運用、業務改善、PMO支援を軸に、要件整理・課題管理・業務フロー可視化・テスト推進まで、現場とプロジェクトの間をつなぎます。
+              </p>
+              <div class="ops-summary" aria-label="Operational summary">
+                <div>
+                  <span>active scope</span>
+                  <strong>PMO / SE / DX support</strong>
+                </div>
+                <div>
+                  <span>delivery mode</span>
+                  <strong>整理・可視化・推進</strong>
+                </div>
+              </div>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#works">実績を見る</a>
+                <a class="button button-secondary" href="#demo">デモを見る</a>
+              </div>
+            </div>
+
+            <div class="system-card">
+              <div class="system-image">
+                <img src="assets/portfolio-hero.png" alt="業務整理とプロジェクト推進を表すワークスペース" />
+              </div>
+              <dl class="system-stats">
+                <div>
+                  <dt>focus</dt>
+                  <dd>system rollout</dd>
+                </div>
+                <div>
+                  <dt>role</dt>
+                  <dd>PMO / SE</dd>
+                </div>
+                <div>
+                  <dt>style</dt>
+                  <dd>organize / visualize / drive</dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="intro-strip" aria-label="Profile summary">
-        <div>
-          <span>Focus</span>
-          <strong>システム導入支援</strong>
-        </div>
-        <div>
-          <span>Role</span>
-          <strong>PMO / SE / 業務改善</strong>
-        </div>
-        <div>
-          <span>Style</span>
-          <strong>整理・可視化・推進</strong>
-        </div>
-      </section>
-
-      <section class="section" id="strengths">
+      <section class="section status-section" id="status">
         <div class="section-heading">
-          <p class="eyebrow">Strengths</p>
-          <h2>現場理解から、進め方を設計する。</h2>
+          <p class="eyebrow">$ cat status.log</p>
+          <h2>現場で詰まりやすい情報を、進められる形に変換する。</h2>
         </div>
-        <div class="strength-grid">
+        <div class="status-grid">
           <article>
-            <span>01</span>
+            <span class="status-key">01.requirements</span>
             <h3>要件と課題の整理</h3>
             <p>関係者の認識差をほどき、業務要件・課題・Q&A・テスト観点を扱いやすい形へ整理します。</p>
           </article>
           <article>
-            <span>02</span>
+            <span class="status-key">02.automation</span>
             <h3>業務改善と自動化</h3>
             <p>Excel VBA、Power Automate、Microsoft 365を活用し、転記や帳票作成などの手作業を削減します。</p>
           </article>
           <article>
-            <span>03</span>
+            <span class="status-key">03.operations</span>
             <h3>インフラ運用の実行力</h3>
             <p>PCリプレース、Windows移行、Active Directory、無線LAN調査など、現場作業を伴う案件にも対応します。</p>
           </article>
@@ -84,55 +122,67 @@
 
       <section class="section works-section" id="works">
         <div class="section-heading">
-          <p class="eyebrow">Selected works</p>
+          <p class="eyebrow">$ ls selected_works</p>
           <h2>匿名化したプロジェクト実績。</h2>
         </div>
         <div class="timeline">
           <article class="work-item">
-            <div class="work-meta">2025 - 2026 / PMO</div>
+            <div class="work-meta">
+              <span>2025 - 2026</span>
+              <strong>PMO</strong>
+            </div>
             <div>
               <h3>鉄道会社向け 旅客案内情報システム取替支援</h3>
               <p>要件整理、課題管理、シナリオテスト支援、ドキュメント整備を担当。駅・表示機・案内情報に関わる確認観点を整理し、プロジェクト推進を支援。</p>
               <ul>
                 <li>課題・Q&A管理</li>
-                <li>テスト計画、シナリオ整理</li>
-                <li>関係者間の情報整理</li>
+                <li>テスト計画</li>
+                <li>シナリオ整理</li>
               </ul>
             </div>
           </article>
           <article class="work-item">
-            <div class="work-meta">2024 - 2025 / PMO, SE</div>
+            <div class="work-meta">
+              <span>2024 - 2025</span>
+              <strong>PMO / SE</strong>
+            </div>
             <div>
               <h3>製造業向け 基幹システム刷新支援</h3>
               <p>ERP刷新に伴う要件定義支援、Microsoft 365基盤整備、VBAによる帳票発行効率化、入力チェック機能の構築を担当。</p>
               <ul>
                 <li>手入力削減 60%</li>
-                <li>転記作業 月30時間削減</li>
-                <li>VBAによる月20時間削減</li>
+                <li>月30時間削減</li>
+                <li>VBA改善</li>
               </ul>
             </div>
           </article>
           <article class="work-item">
-            <div class="work-meta">2022 - 2024 / Sub leader</div>
+            <div class="work-meta">
+              <span>2022 - 2024</span>
+              <strong>Sub leader</strong>
+            </div>
             <div>
               <h3>企業向け PCリプレース / Windows移行</h3>
               <p>約12,000台規模のWindows 11移行対応で、キッティング効率化、マスタ展開、進捗管理、メンバー支援を担当。</p>
               <ul>
                 <li>PCセットアップ標準化</li>
-                <li>Bat作成による作業効率化</li>
+                <li>Bat作成</li>
                 <li>チーム進捗管理</li>
               </ul>
             </div>
           </article>
           <article class="work-item">
-            <div class="work-meta">2021 - 2022 / DX support</div>
+            <div class="work-meta">
+              <span>2021 - 2022</span>
+              <strong>DX support</strong>
+            </div>
             <div>
               <h3>自治体向け CIO補佐・窓口DX支援</h3>
               <p>業務改善提案、業務フロー整理、課題管理、チケット管理、関係部署との調整を担当。</p>
               <ul>
                 <li>改善対象 10業務</li>
-                <li>Backlogによるチケット管理</li>
-                <li>年間利用者 約5,000人規模</li>
+                <li>Backlog管理</li>
+                <li>年間利用者 約5,000人</li>
               </ul>
             </div>
           </article>
@@ -141,7 +191,7 @@
 
       <section class="section demo-section" id="demo">
         <div class="section-heading">
-          <p class="eyebrow">Demo work</p>
+          <p class="eyebrow">$ open demo_suite</p>
           <h2>眼鏡店向け、発注から販売までの業務システムデモ。</h2>
         </div>
         <div class="demo-showcase">
@@ -153,17 +203,17 @@
             <a class="button demo-button" href="demos/optical-inventory.html">デモを開く</a>
           </div>
           <div class="demo-preview" aria-hidden="true">
-            <span>Purchase</span>
-            <span>Stock</span>
-            <span>Order</span>
-            <span>Sale</span>
+            <span>purchase</span>
+            <span>stock</span>
+            <span>order</span>
+            <span>sale</span>
           </div>
         </div>
       </section>
 
       <section class="section skills-section" id="skills">
         <div class="section-heading">
-          <p class="eyebrow">Skills</p>
+          <p class="eyebrow">$ inspect skills</p>
           <h2>推進と改善を支える技術。</h2>
         </div>
         <div class="skill-columns">
@@ -184,7 +234,7 @@
 
       <section class="contact-section" id="contact">
         <div>
-          <p class="eyebrow">Contact</p>
+          <p class="eyebrow">$ ping contact</p>
           <h2>業務改善やPMO支援の相談はこちら。</h2>
           <p>公開用の連絡先は後から差し替えできます。まずはGitHubベースで更新しながら育てていきます。</p>
         </div>
